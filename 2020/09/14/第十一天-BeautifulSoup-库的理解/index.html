@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="第十一天：BeautifulSoup 库的理解：HTML 都是由一对对标签组成的，标签就是&lt;html&gt;&lt;&#x2F;html&gt;, 而一堆标签组成的叫做标签树 标签树： 12345&lt;html&gt;    &lt;body&gt;        &lt;p class”title”&gt; ... &lt;&#x2F;p&gt;    &lt;&#x2F;body&gt;&lt;html&gt; 所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十一天:BeautifulSoup 库的理解">
+<meta property="og:url" content="http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="第十一天：BeautifulSoup 库的理解：HTML 都是由一对对标签组成的，标签就是&lt;html&gt;&lt;&#x2F;html&gt;, 而一堆标签组成的叫做标签树 标签树： 12345&lt;html&gt;    &lt;body&gt;        &lt;p class”title”&gt; ... &lt;&#x2F;p&gt;    &lt;&#x2F;body&gt;&lt;html&gt; 所">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-14T08:44:26.000Z">
+<meta property="article:modified_time" content="2020-09-14T08:50:24.050Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Crawler">
+<meta property="article:tag" content="BeautifulSoup">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第十一天:BeautifulSoup 库的理解</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%A4%A9-BeautifulSoup-%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E7%9A%84%E4%BD%BF%E7%94%A8%E5%88%97%E5%AD%90/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E5%A4%A9-BeautifulSoup-%E5%BA%93%E8%A7%A3%E6%9E%90-requests-%E5%BA%93%E8%BF%94%E5%9B%9E%E7%9A%84%E5%86%85%E5%AE%B9/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&text=第十一天:BeautifulSoup 库的理解"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&is_video=false&description=第十一天:BeautifulSoup 库的理解"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十一天:BeautifulSoup 库的理解&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&name=第十一天:BeautifulSoup 库的理解&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&t=第十一天:BeautifulSoup 库的理解"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">第十一天：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">BeautifulSoup 库的理解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E7%9A%84%E6%A0%BC%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.0.2.</span> <span class="toc-text">标签的格式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Beautiful-Soup-%E7%9A%84%E5%BC%95%E7%94%A8%EF%BC%9A"><span class="toc-number">1.0.3.</span> <span class="toc-text">Beautiful Soup 的引用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Beautiful-Soup%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.0.4.</span> <span class="toc-text">Beautiful Soup类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BeaurifulSoup%E8%A7%A3%E6%9E%90%E5%99%A8%EF%BC%9A"><span class="toc-number">1.0.5.</span> <span class="toc-text">BeaurifulSoup解析器：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Beautiful-Soup-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%EF%BC%88%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AF%B4%E6%98%AFHTML%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%EF%BC%89"><span class="toc-number">1.0.6.</span> <span class="toc-text">Beautiful Soup 类的基本元素（也可以说是HTML中的基本元素）</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第十一天:BeautifulSoup 库的理解
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-14T08:44:26.000Z" itemprop="datePublished">2020-09-14</time>
+        
+        (Updated: <time datetime="2020-09-14T08:50:24.050Z" itemprop="dateModified">2020-09-14</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/BeautifulSoup/" rel="tag">BeautifulSoup</a>, <a class="tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="第十一天："><a href="#第十一天：" class="headerlink" title="第十一天："></a>第十一天：</h1><h3 id="BeautifulSoup-库的理解："><a href="#BeautifulSoup-库的理解：" class="headerlink" title="BeautifulSoup 库的理解："></a>BeautifulSoup 库的理解：</h3><p>HTML 都是由一对对标签组成的，标签就是<code>&lt;html&gt;&lt;/html&gt;</code>, 而一堆标签组成的叫做标签树</p>
+<p>标签树：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>”<span class="attr">title</span>”&gt;</span> ... <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>所以我们可以说BeaurifulSoup是解析、遍历、维护“标签树”的功能库</p>
+<h3 id="标签的格式："><a href="#标签的格式：" class="headerlink" title="标签的格式："></a>标签的格式：</h3><p><code>&lt;p class=”title”&gt; ... &lt;/p&gt;</code></p>
+<ul>
+<li><code>&lt;p&gt; ... 中间的叫标签对 ...&lt;/p&gt;</code></li>
+<li><code>&lt;p&gt;</code>和<code>&lt;/p&gt;</code>是叫标签的名Name，一般上都成对出现</li>
+<li><code>class=”title”</code>则代表属性Attributes（可以理解为变量），可以有很多个</li>
+</ul>
+<h3 id="Beautiful-Soup-的引用："><a href="#Beautiful-Soup-的引用：" class="headerlink" title="Beautiful Soup 的引用："></a>Beautiful Soup 的引用：</h3><ul>
+<li><code>from bs4 import BeautifulSoup</code> (单单引入BeautifulSoup库)</li>
+<li><code>import bs4</code> （引入bs4 里包过 BeautifulSoup 和其他的库）</li>
+</ul>
+<h3 id="Beautiful-Soup类："><a href="#Beautiful-Soup类：" class="headerlink" title="Beautiful Soup类："></a>Beautiful Soup类：</h3><p>HTML == 标签树 == BeautifulSoup类</p>
+<p>这里我们给出几个代码(这里要注意，as关键字在很复杂的代码里尽量不要使用，会导致代码变得混淆，因为要去猜库的名是什么)：</p>
+<ul>
+<li><code>from bs4 import BeautifulSoup as bs</code></li>
+<li><code>soup = bs(“&lt;html&gt;data&lt;/html&gt;”, “html.parser”)</code></li>
+<li><code>soup2 = bs(open(“homt/simon/demo.html”), “”html.parser)</code></li>
+</ul>
+<p>BeautifulSoup是对应一整个XML/HTML文档的全部内容</p>
+<h3 id="BeaurifulSoup解析器："><a href="#BeaurifulSoup解析器：" class="headerlink" title="BeaurifulSoup解析器："></a>BeaurifulSoup解析器：</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">      解析器				使用方法				    条件</span><br><span class="line">- bs4 的 HTML 解析器   BeautifulSoup(mk,”html.parser”)         安装bs4库</span><br><span class="line">- lxml的 HTML 解析器   BeautifulSoup(mk,”lxml”)		          pip3 install lxml</span><br><span class="line">- lxml 的XML 解析      BeautifulSoup(mk,”xml”)                 pip3 install lxml</span><br><span class="line">- html5lib 的 解析器   BeautifulSoup(mk,”html5lib”)            pip3 install html5lib</span><br></pre></td></tr></table></figure>
+
+<h3 id="Beautiful-Soup-类的基本元素（也可以说是HTML中的基本元素）"><a href="#Beautiful-Soup-类的基本元素（也可以说是HTML中的基本元素）" class="headerlink" title="Beautiful Soup 类的基本元素（也可以说是HTML中的基本元素）"></a>Beautiful Soup 类的基本元素（也可以说是HTML中的基本元素）</h3><ul>
+<li>tag : 标签，最基本的信息组织单元，分别为<code>&lt;&gt;</code>和<code>&lt;/&gt;</code>标明开头和结尾</li>
+<li>Name ： 标签的名字，<code>&lt;p&gt; ... &lt;/p&gt;</code>的名字是’p’, 格式： <code>&lt;tag&gt;.name</code></li>
+<li>Attributes ： 标签的属性，字典形式组织，格式：<code>&lt;tag&gt;.attrs</code></li>
+<li>NavigableString : 标签内非属性字符， <code>&lt;&gt; ... &lt;/&gt;</code>中的字符串，格式：<code>&lt;tag&gt;.string</code></li>
+<li>Comment： 标签内字符串的注解部分，一种特殊情况的Comment类型</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">第十一天：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">BeautifulSoup 库的理解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E7%9A%84%E6%A0%BC%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.0.2.</span> <span class="toc-text">标签的格式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Beautiful-Soup-%E7%9A%84%E5%BC%95%E7%94%A8%EF%BC%9A"><span class="toc-number">1.0.3.</span> <span class="toc-text">Beautiful Soup 的引用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Beautiful-Soup%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.0.4.</span> <span class="toc-text">Beautiful Soup类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BeaurifulSoup%E8%A7%A3%E6%9E%90%E5%99%A8%EF%BC%9A"><span class="toc-number">1.0.5.</span> <span class="toc-text">BeaurifulSoup解析器：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Beautiful-Soup-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%EF%BC%88%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AF%B4%E6%98%AFHTML%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%EF%BC%89"><span class="toc-number">1.0.6.</span> <span class="toc-text">Beautiful Soup 类的基本元素（也可以说是HTML中的基本元素）</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&text=第十一天:BeautifulSoup 库的理解"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&is_video=false&description=第十一天:BeautifulSoup 库的理解"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十一天:BeautifulSoup 库的理解&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&title=第十一天:BeautifulSoup 库的理解"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&name=第十一天:BeautifulSoup 库的理解&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9-BeautifulSoup-%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/&t=第十一天:BeautifulSoup 库的理解"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

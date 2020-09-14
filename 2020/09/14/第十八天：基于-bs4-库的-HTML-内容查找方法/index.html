@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="第十八天基于 bs4 库的 HTML 内容查找方法&lt;&gt;.find_all(name, attrs, recursive, string, **kwargs) find_all 返回的是一个列表类型  name: 对列表名称的检索字符 attrs: 对标签属性值搜索字符串，可标记属性检索 recursive: 是否对子孙节点全部探索，默认为True string: &lt;&gt; …">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十八天：基于 bs4 库的 HTML 内容查找方法">
+<meta property="og:url" content="http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="第十八天基于 bs4 库的 HTML 内容查找方法&lt;&gt;.find_all(name, attrs, recursive, string, **kwargs) find_all 返回的是一个列表类型  name: 对列表名称的检索字符 attrs: 对标签属性值搜索字符串，可标记属性检索 recursive: 是否对子孙节点全部探索，默认为True string: &lt;&gt; …">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/Simon8282005/Python-Crawler-Learning-/blob/master/Day%2036/Screenshot_2020-08-12_20-41-17.png">
+<meta property="article:published_time" content="2020-09-14T08:45:45.000Z">
+<meta property="article:modified_time" content="2020-09-14T09:02:59.036Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Crawler">
+<meta property="article:tag" content="BeautifulSoup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Simon8282005/Python-Crawler-Learning-/blob/master/Day%2036/Screenshot_2020-08-12_20-41-17.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第十八天：基于 bs4 库的 HTML 内容查找方法</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B9%9D%E5%A4%A9%EF%BC%9A%E2%80%9C%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E6%8E%92%E5%90%8D%E5%AE%9A%E5%90%91%E7%88%AC%E8%99%AB%E6%95%99%E5%AD%A6%E2%80%9D-%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%BC%96%E5%86%99/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&text=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&is_video=false&description=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十八天：基于 bs4 库的 HTML 内容查找方法&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&name=第十八天：基于 bs4 库的 HTML 内容查找方法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&t=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第十八天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">基于 bs4 库的 HTML 内容查找方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Name"><span class="toc-number"></span> <span class="toc-text">Name</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Attrs"><span class="toc-number"></span> <span class="toc-text">Attrs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recursive"><span class="toc-number"></span> <span class="toc-text">Recursive</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String"><span class="toc-number"></span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#kwargs"><span class="toc-number"></span> <span class="toc-text">**kwargs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E5%B0%8F%E7%BB%93"><span class="toc-number"></span> <span class="toc-text">单元小结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E4%B8%8E%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">信息标记与提取方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">信息提取的一般方法</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第十八天：基于 bs4 库的 HTML 内容查找方法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-14T08:45:45.000Z" itemprop="datePublished">2020-09-14</time>
+        
+        (Updated: <time datetime="2020-09-14T09:02:59.036Z" itemprop="dateModified">2020-09-14</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/BeautifulSoup/" rel="tag">BeautifulSoup</a>, <a class="tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="第十八天"><a href="#第十八天" class="headerlink" title="第十八天"></a>第十八天</h3><h1 id="基于-bs4-库的-HTML-内容查找方法"><a href="#基于-bs4-库的-HTML-内容查找方法" class="headerlink" title="基于 bs4 库的 HTML 内容查找方法"></a>基于 bs4 库的 HTML 内容查找方法</h1><p><code>&lt;&gt;.find_all(name, attrs, recursive, string, **kwargs)</code></p>
+<p>find_all 返回的是一个列表类型</p>
+<ul>
+<li>name: 对列表名称的检索字符</li>
+<li>attrs: 对标签属性值搜索字符串，可标记属性检索</li>
+<li>recursive: 是否对子孙节点全部探索，默认为True</li>
+<li>string: &lt;&gt; … &lt;/&gt; 中字符串区域的探索字符串</li>
+</ul>
+<h1 id="Name"><a href="#Name" class="headerlink" title="Name"></a>Name</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(<span class="string">&quot;a&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&lt;a class&#x3D;&quot;py1&quot; href&#x3D;&quot;http:&#x2F;&#x2F;www.icourse163.org&#x2F;course&#x2F;BIT-268001&quot; id&#x3D;&quot;link1&quot;&gt;Basic Python&lt;&#x2F;a&gt;, &lt;a class&#x3D;&quot;py2&quot; href&#x3D;&quot;http:&#x2F;&#x2F;www.icourse163.org&#x2F;course&#x2F;BIT-1001870001&quot; id&#x3D;&quot;link2&quot;&gt;Advanced Python&lt;&#x2F;a&gt;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all([<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>])</span><br></pre></td></tr></table></figure>
+<p><strong>Output</strong>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="tag">&lt;<span class="name">b</span>&gt;</span>The demo python introduces several python courses.<span class="tag">&lt;/<span class="name">b</span>&gt;</span>, <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;py1&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://www.icourse163.org/course/BIT-268001&quot;</span> <span class="attr">id</span>=<span class="string">&quot;link1&quot;</span>&gt;</span>Basic Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>, <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;py2&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://www.icourse163.org/course/BIT-1001870001&quot;</span> <span class="attr">id</span>=<span class="string">&quot;link2&quot;</span>&gt;</span>Advanced Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> tag <span class="keyword">in</span> soup.find_all(<span class="literal">True</span>):</span><br><span class="line">	print(tag.name)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong>:</p>
+<blockquote>
+<p><code>html head title body p b p a a</code></p>
+</blockquote>
+<p>以上的列子需要我们很精确的知道标签的名字，但要是我们不知道名字或我们想要查找所有以 <code>b</code> 开头的标签名字要咋办呢？ 嘿嘿嘿，轮到正则表达式登场了，掌声！！！</p>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p><code>正则表达式，又称正则表示式、正则表示法、规则表达式、常规表示法，是计算机科学的一个概念。正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些符合某个模式的文本。 许多程序设计语言都支持利用正则表达式进行字符串操作。（摘自维基百科）</code></p>
+<p>要使用正则表达式要先导入 re 库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">soup.find_all(re.compile(<span class="string">&quot;b&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p><strong>Output</strong>:</p>
+<blockquote>
+<p><code>body b</code></p>
+</blockquote>
+<h1 id="Attrs"><a href="#Attrs" class="headerlink" title="Attrs"></a>Attrs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(<span class="string">&quot;p&quot;</span>, <span class="string">&quot;course&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;course&quot;</span>&gt;</span>Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;py1&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://www.icourse163.org/course/BIT-268001&quot;</span> <span class="attr">id</span>=<span class="string">&quot;link1&quot;</span>&gt;</span>Basic Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span> and <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;py2&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://www.icourse163.org/course/BIT-1001870001&quot;</span> <span class="attr">id</span>=<span class="string">&quot;link2&quot;</span>&gt;</span>Advanced Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(id=<span class="string">&quot;link1&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;py1&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://www.icourse163.org/course/BIT-268001&quot;</span> <span class="attr">id</span>=<span class="string">&quot;link1&quot;</span>&gt;</span>Basic Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(id=<span class="string">&quot;link&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<blockquote>
+<p><code>[]</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(id=<span class="string">&quot;link2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;py2&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://www.icourse163.org/course/BIT-1001870001&quot;</span> <span class="attr">id</span>=<span class="string">&quot;link2&quot;</span>&gt;</span>Advanced Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(id = re.compile(<span class="string">&quot;link&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;py1&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://www.icourse163.org/course/BIT-268001&quot;</span> <span class="attr">id</span>=<span class="string">&quot;link1&quot;</span>&gt;</span>Basic Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>, <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;py2&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://www.icourse163.org/course/BIT-1001870001&quot;</span> <span class="attr">id</span>=<span class="string">&quot;link2&quot;</span>&gt;</span>Advanced Python<span class="tag">&lt;/<span class="name">a</span>&gt;</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="Recursive"><a href="#Recursive" class="headerlink" title="Recursive"></a>Recursive</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(<span class="string">&quot;a&quot;</span>, recursive = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<blockquote>
+<p><code>[]</code></p>
+</blockquote>
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(string = <span class="string">&quot;Basic Python&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<blockquote>
+<p><code>[&#39;Basic Python&#39;]</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(string = re.compile(<span class="string">&quot;python&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<blockquote>
+<p><code>[&#39;This is a python demo page&#39;, &#39;The demo python introduces several python courses.&#39;]</code></p>
+</blockquote>
+<hr>
+<p>12/8/2020</p>
+<h1 id="kwargs"><a href="#kwargs" class="headerlink" title="**kwargs"></a>**kwargs</h1><p><img src="https://github.com/Simon8282005/Python-Crawler-Learning-/blob/master/Day%2036/Screenshot_2020-08-12_20-41-17.png" alt="find_all 的额外方法"></p>
+<h1 id="单元小结"><a href="#单元小结" class="headerlink" title="单元小结"></a>单元小结</h1><h3 id="信息标记与提取方法"><a href="#信息标记与提取方法" class="headerlink" title="信息标记与提取方法"></a>信息标记与提取方法</h3><ul>
+<li>XML &lt;&gt; … &lt;/&gt;</li>
+<li>JSON 有类型 key:value</li>
+<li>YAML 无类型 key:value</li>
+</ul>
+<h3 id="信息提取的一般方法"><a href="#信息提取的一般方法" class="headerlink" title="信息提取的一般方法"></a>信息提取的一般方法</h3><p>&lt;&gt;.find_all(name, attrs, recursive, string, **kwargs)</p>
+<p>可以使用 <code>&lt;tag&gt;()</code> 来代替 <code>&lt;tag&gt;.find_all()</code><br>比如 <code>soup()</code> 来代替 <code>soup.find_all()</code></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第十八天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">基于 bs4 库的 HTML 内容查找方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Name"><span class="toc-number"></span> <span class="toc-text">Name</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Attrs"><span class="toc-number"></span> <span class="toc-text">Attrs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recursive"><span class="toc-number"></span> <span class="toc-text">Recursive</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String"><span class="toc-number"></span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#kwargs"><span class="toc-number"></span> <span class="toc-text">**kwargs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E5%B0%8F%E7%BB%93"><span class="toc-number"></span> <span class="toc-text">单元小结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E4%B8%8E%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">信息标记与提取方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">信息提取的一般方法</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&text=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&is_video=false&description=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十八天：基于 bs4 库的 HTML 内容查找方法&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&title=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&name=第十八天：基于 bs4 库的 HTML 内容查找方法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/&t=第十八天：基于 bs4 库的 HTML 内容查找方法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

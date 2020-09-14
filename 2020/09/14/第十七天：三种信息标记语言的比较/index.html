@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="7&#x2F;8&#x2F;2020 第十七天三种信息标记语言的比较XML 实列12345678910&lt;person&gt;    &lt;firestName&gt;Tian&lt;&#x2F;firstName&gt;    &lt;firstName&gt;Song&lt;&#x2F;lastName&gt;    &lt;adress&gt;        &lt;streetAddr&gt;中关村南大街5号&lt;&#x2F;st">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十七天：三种信息标记语言的比较">
+<meta property="og:url" content="http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="7&#x2F;8&#x2F;2020 第十七天三种信息标记语言的比较XML 实列12345678910&lt;person&gt;    &lt;firestName&gt;Tian&lt;&#x2F;firstName&gt;    &lt;firstName&gt;Song&lt;&#x2F;lastName&gt;    &lt;adress&gt;        &lt;streetAddr&gt;中关村南大街5号&lt;&#x2F;st">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-14T08:45:36.000Z">
+<meta property="article:modified_time" content="2020-09-14T09:00:29.690Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Crawler">
+<meta property="article:tag" content="Xml">
+<meta property="article:tag" content="Json">
+<meta property="article:tag" content="Yaml">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第十七天：三种信息标记语言的比较</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%A4%A9%EF%BC%9A%E5%9F%BA%E4%BA%8E-bs4-%E5%BA%93%E7%9A%84-HTML-%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AD%E5%A4%A9-JSON%E5%92%8CYAML/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&text=第十七天：三种信息标记语言的比较"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&is_video=false&description=第十七天：三种信息标记语言的比较"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十七天：三种信息标记语言的比较&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&name=第十七天：三种信息标记语言的比较&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&t=第十七天：三种信息标记语言的比较"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第十七天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number"></span> <span class="toc-text">三种信息标记语言的比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XML-%E5%AE%9E%E5%88%97"><span class="toc-number"></span> <span class="toc-text">XML 实列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON-%E5%AE%9E%E5%88%97"><span class="toc-number"></span> <span class="toc-text">JSON 实列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YAML-%E5%AE%9E%E5%88%97"><span class="toc-number"></span> <span class="toc-text">YAML 实列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">结论：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%94%A8"><span class="toc-number"></span> <span class="toc-text">运用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9-1"><span class="toc-number">1.</span> <span class="toc-text">第十七天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">信息提取的一般方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="toc-number"></span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-number"></span> <span class="toc-text">方法二</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%88%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">方法三（融合方法）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-BeautifulSoup-%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%E4%B8%89"><span class="toc-number"></span> <span class="toc-text">使用 BeautifulSoup 实现方法三</span></a>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第十七天：三种信息标记语言的比较
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-14T08:45:36.000Z" itemprop="datePublished">2020-09-14</time>
+        
+        (Updated: <time datetime="2020-09-14T09:00:29.690Z" itemprop="dateModified">2020-09-14</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>, <a class="tag-link-link" href="/tags/Json/" rel="tag">Json</a>, <a class="tag-link-link" href="/tags/Xml/" rel="tag">Xml</a>, <a class="tag-link-link" href="/tags/Yaml/" rel="tag">Yaml</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>7/8/2020</p>
+<h3 id="第十七天"><a href="#第十七天" class="headerlink" title="第十七天"></a>第十七天</h3><h1 id="三种信息标记语言的比较"><a href="#三种信息标记语言的比较" class="headerlink" title="三种信息标记语言的比较"></a>三种信息标记语言的比较</h1><h2 id="XML-实列"><a href="#XML-实列" class="headerlink" title="XML 实列"></a>XML 实列</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">person</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">firestName</span>&gt;</span>Tian<span class="tag">&lt;/<span class="name">firstName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">firstName</span>&gt;</span>Song<span class="tag">&lt;/<span class="name">lastName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">adress</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">streetAddr</span>&gt;</span>中关村南大街5号<span class="tag">&lt;/<span class="name">streetAddr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">city</span>&gt;</span>北京市<span class="tag">&lt;/<span class="name">city</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">zipcode</span>&gt;</span>100081<span class="tag">&lt;/<span class="name">zipcode</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">prof</span>&gt;</span>Computer System<span class="tag">&lt;/<span class="name">prof</span>&gt;</span><span class="tag">&lt;<span class="name">prof</span>&gt;</span>Security<span class="tag">&lt;/<span class="name">prof</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">person</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="JSON-实列"><a href="#JSON-实列" class="headerlink" title="JSON 实列"></a>JSON 实列</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;firstName&quot;</span> : <span class="string">&quot;Tian&quot;</span></span><br><span class="line">    <span class="string">&quot;lastName&quot;</span>  : <span class="string">&quot;Song&quot;</span></span><br><span class="line">    <span class="string">&quot;address&quot;</span>   : &#123;</span><br><span class="line">                    <span class="attr">&quot;streetAddr&quot;</span> : <span class="string">&quot;中关村南大街5号&quot;</span></span><br><span class="line">                    <span class="string">&quot;city&quot;</span> : <span class="string">&quot;北京市&quot;</span></span><br><span class="line">                    <span class="string">&quot;zipcode&quot;</span> : <span class="string">&quot;100081&quot;</span></span><br><span class="line">                  &#125;</span><br><span class="line">    <span class="string">&quot;prof&quot;</span>      : [<span class="string">&quot;Computer System&quot;</span>,<span class="string">&quot;Security&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="YAML-实列"><a href="#YAML-实列" class="headerlink" title="YAML 实列"></a>YAML 实列</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">firstName</span> <span class="string">：</span> <span class="string">Tian</span></span><br><span class="line"><span class="string">lastName</span>  <span class="string">：</span> <span class="string">Song</span></span><br><span class="line"><span class="string">address</span>   <span class="string">：</span> </span><br><span class="line">    <span class="attr">streetAddr  :</span> <span class="string">中关村南大街5号</span></span><br><span class="line">    <span class="attr">city        :</span> <span class="string">北京市</span></span><br><span class="line">    <span class="attr">zipcode     :</span> <span class="number">100081</span></span><br><span class="line"><span class="attr">prof    :</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Computer</span> <span class="string">System</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Security</span></span><br></pre></td></tr></table></figure>
+<h1 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h1><ul>
+<li>XML ： 最早的通用信息标记语言，可扩展性好，但繁琐</li>
+<li>JSON ： 信息有类型，比较适合用程序处理（JavaScript），较 XML 简结</li>
+<li>YAML ： 信息无类型，文本信息比例最高，可读性最好</li>
+</ul>
+<h1 id="运用"><a href="#运用" class="headerlink" title="运用"></a>运用</h1><ul>
+<li>XML 被大量的运用在 Internet 的信息交互与传递上。</li>
+<li>JSON 被运用在云端和节点的信息通信，也就是说 JSON 是和接口打交道的信息标记格式，当时 JSON 无法添加注解，这是一个比较大的缺点</li>
+<li>YAML 被运用在各类系统的配置文件，因为可以添加注解所以比 XML 和 JSON 易读</li>
+</ul>
+<p>8/8/2020</p>
+<h3 id="第十七天-1"><a href="#第十七天-1" class="headerlink" title="第十七天"></a>第十七天</h3><h1 id="信息提取的一般方法"><a href="#信息提取的一般方法" class="headerlink" title="信息提取的一般方法"></a>信息提取的一般方法</h1><p><strong>- 信息提取是说 “从所标记的信息中提取我们所关注的内容”</strong></p>
+<p>但问题是要咋提取啊？ </p>
+<p><strong>XD Well,let me show you :</strong></p>
+<h1 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h1><p>完整解析信息的标记形式，再提取关键信息。就是说我们用标记解析器(bs4 库的 <code>html.parser</code>)来解析 <strong>XML, JSON 和 YAML</strong>。比如 bs4 库提供了标签树的遍历，我们需要什么信息去遍历这个树就可以了。</p>
+<p>优点：能很精确的解析并提取信息<br>缺点：解析过程比较繁琐，速度比较慢</p>
+<h1 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h1><p>无视信息标记的形式，在直接<strong>搜索</strong>关键信息(比如使用查找函数 Crtl + F)</p>
+<p>优点：提取过程简介，速度较快<br>缺点：提取结果的准确性与信息的内容息息相关</p>
+<h1 id="方法三（融合方法）"><a href="#方法三（融合方法）" class="headerlink" title="方法三（融合方法）"></a>方法三（融合方法）</h1><p>结合方法一 (<strong>信息解析</strong>) 和方法二 (<strong>搜索</strong>)，来提取关键信息</p>
+<p>这就需要我们的工具具备标记解析器和文本查找的能力</p>
+<h1 id="使用-BeautifulSoup-实现方法三"><a href="#使用-BeautifulSoup-实现方法三" class="headerlink" title="使用 BeautifulSoup 实现方法三"></a>使用 BeautifulSoup 实现方法三</h1><p><strong>目标：提取一个 HTML 页面的所有 URL 链接</strong></p>
+<p>思路： </p>
+<p>1）搜索到所以 <code>&lt;a&gt;</code> 标签</p>
+<p>2）解析 <code>&lt;a&gt;</code> 标签格式，提取href后的链接内容   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> link <span class="keyword">in</span> soup.find_all(<span class="string">&#x27;a&#x27;</span>):</span><br><span class="line">	print(link.get(<span class="string">&quot;href&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.icourse163.org/course/BIT-268001">http://www.icourse163.org/course/BIT-268001</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.icourse163.org/course/BIT-1001870001">http://www.icourse163.org/course/BIT-1001870001</a></p>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第十七天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number"></span> <span class="toc-text">三种信息标记语言的比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XML-%E5%AE%9E%E5%88%97"><span class="toc-number"></span> <span class="toc-text">XML 实列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON-%E5%AE%9E%E5%88%97"><span class="toc-number"></span> <span class="toc-text">JSON 实列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YAML-%E5%AE%9E%E5%88%97"><span class="toc-number"></span> <span class="toc-text">YAML 实列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">结论：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%94%A8"><span class="toc-number"></span> <span class="toc-text">运用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9-1"><span class="toc-number">1.</span> <span class="toc-text">第十七天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">信息提取的一般方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="toc-number"></span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-number"></span> <span class="toc-text">方法二</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%88%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">方法三（融合方法）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-BeautifulSoup-%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%E4%B8%89"><span class="toc-number"></span> <span class="toc-text">使用 BeautifulSoup 实现方法三</span></a>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&text=第十七天：三种信息标记语言的比较"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&is_video=false&description=第十七天：三种信息标记语言的比较"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十七天：三种信息标记语言的比较&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&title=第十七天：三种信息标记语言的比较"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&name=第十七天：三种信息标记语言的比较&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E4%B8%89%E7%A7%8D%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80%E7%9A%84%E6%AF%94%E8%BE%83/&t=第十七天：三种信息标记语言的比较"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

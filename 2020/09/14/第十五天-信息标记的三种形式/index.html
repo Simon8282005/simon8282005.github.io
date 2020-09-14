@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="第十五天信息标记的三种形式问：什么是信息标记？ 答：假设说给你一个数据，如一个名字（理成），我们很容易就能识别出这是一个名字并记起来，但当给你一大堆的数据（你好、123、麻省理工、哇老，0394,世界杯，哈佛）是不是就记不来了呢？ XD因为这堆数据里掺杂这名字，号码，名词，说话等等等等一大堆的数据，这个时候我们就需要把这些信息标记起来，以让我们更容易识别。上列子：  “Name”： 麻省理工，世界">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十五天:信息标记的三种形式">
+<meta property="og:url" content="http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="第十五天信息标记的三种形式问：什么是信息标记？ 答：假设说给你一个数据，如一个名字（理成），我们很容易就能识别出这是一个名字并记起来，但当给你一大堆的数据（你好、123、麻省理工、哇老，0394,世界杯，哈佛）是不是就记不来了呢？ XD因为这堆数据里掺杂这名字，号码，名词，说话等等等等一大堆的数据，这个时候我们就需要把这些信息标记起来，以让我们更容易识别。上列子：  “Name”： 麻省理工，世界">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-14T08:45:19.000Z">
+<meta property="article:modified_time" content="2020-09-14T08:58:43.928Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Crawler">
+<meta property="article:tag" content="Xml">
+<meta property="article:tag" content="Json">
+<meta property="article:tag" content="Yaml">
+<meta property="article:tag" content="Html">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第十五天:信息标记的三种形式</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E5%85%AD%E5%A4%A9-JSON%E5%92%8CYAML/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%A4%A9-%E5%9F%BA%E4%BA%8E-BeautifulSoup-%E7%9A%84-HTML-%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&text=第十五天:信息标记的三种形式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&is_video=false&description=第十五天:信息标记的三种形式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十五天:信息标记的三种形式&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&name=第十五天:信息标记的三种形式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&t=第十五天:信息标记的三种形式"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第十五天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">信息标记的三种形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A0%87%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">信息的标记</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86-Hyper-Text-Markup-Language-HTML"><span class="toc-number"></span> <span class="toc-text">重新认识 Hyper Text Markup Language(HTML)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number"></span> <span class="toc-text">信息标记的种类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XML-eXtensible-Markup-Language"><span class="toc-number"></span> <span class="toc-text">XML (eXtensible Markup Language)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XML-%E5%B0%8F%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">XML 小结</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第十五天:信息标记的三种形式
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-14T08:45:19.000Z" itemprop="datePublished">2020-09-14</time>
+        
+        (Updated: <time datetime="2020-09-14T08:58:43.928Z" itemprop="dateModified">2020-09-14</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>, <a class="tag-link-link" href="/tags/Html/" rel="tag">Html</a>, <a class="tag-link-link" href="/tags/Json/" rel="tag">Json</a>, <a class="tag-link-link" href="/tags/Xml/" rel="tag">Xml</a>, <a class="tag-link-link" href="/tags/Yaml/" rel="tag">Yaml</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="第十五天"><a href="#第十五天" class="headerlink" title="第十五天"></a>第十五天</h3><h1 id="信息标记的三种形式"><a href="#信息标记的三种形式" class="headerlink" title="信息标记的三种形式"></a>信息标记的三种形式</h1><p>问：<strong>什么是信息标记？</strong></p>
+<p>答：假设说给你一个数据，如一个名字（<code>理成</code>），我们很容易就能识别出这是一个名字并记起来，但当给你一大堆的数据（<code>你好、123、麻省理工、哇老，0394,世界杯，哈佛</code>）是不是就记不来了呢？ XD<br>因为这堆数据里掺杂这名字，号码，名词，说话等等等等一大堆的数据，这个时候我们就需要把这些信息标记起来，以让我们更容易识别。上列子：</p>
+<ul>
+<li><code>“Name”</code>： 麻省理工，世界杯，哈佛</li>
+<li><code>“Number”</code>： 123,0394</li>
+<li><code>“说话”</code>： 哇老，你好</li>
+</ul>
+<p>是不是比较好背了？ XD</p>
+<h3 id="信息的标记"><a href="#信息的标记" class="headerlink" title="信息的标记"></a>信息的标记</h3><ul>
+<li>标记后的信息可形成信息组织结构，增加了信息维度</li>
+<li>标记后的信息可用于通信、储存或展示</li>
+<li>标记的结构与信息一样具有重要价值</li>
+<li>标记后的信息更利于程序理解和运用</li>
+</ul>
+<h1 id="重新认识-Hyper-Text-Markup-Language-HTML"><a href="#重新认识-Hyper-Text-Markup-Language-HTML" class="headerlink" title="重新认识 Hyper Text Markup Language(HTML)"></a>重新认识 Hyper Text Markup Language(HTML)</h1><p>中文叫做 “超文本标记语言”，其中所说的标记就是我们说的标记了 XD</p>
+<p>HTML 是 WWW(World Wide Web 万维网)主要的信息组织方式</p>
+<p>HTML 能把声音，图像，视频等等的超文本信息，嵌入到文本中（哦！原来如此，我到现在才懂啊，惭愧惭愧 XD）</p>
+<p>HTML 通过预定义的标签 <code>&lt;&gt; ... &lt;/&gt;</code> 形式将不同类型的信息组织起来，比如<code>&lt;html&gt; ... &lt;/html&gt;</code></p>
+<h1 id="信息标记的种类"><a href="#信息标记的种类" class="headerlink" title="信息标记的种类"></a>信息标记的种类</h1><ul>
+<li>XML (我会一点点 XD)</li>
+<li>JSON（原来 json 是信息标记的啊！我还以为是另外一门语言的说 XD）</li>
+<li>YAML (没听过 :) )</li>
+</ul>
+<h1 id="XML-eXtensible-Markup-Language"><a href="#XML-eXtensible-Markup-Language" class="headerlink" title="XML (eXtensible Markup Language)"></a>XML (eXtensible Markup Language)</h1><p>中文叫扩展标记语言，是一种和 HTML 很接近的语言</p>
+<p>它采用了以标签为主来构建信息，表达信息的方式:</p>
+<ul>
+<li>标签：<br><code>&lt;img src=&quot;china.jpg&quot; size=&quot;10&quot;&gt; ... &lt;/img&gt;</code>，其中</li>
+<li><code>&lt;img&gt;</code> 和 <code>&lt;/img&gt;</code> 是名称</li>
+<li><code>src=&quot;china.jpg&quot; size=&quot;10&quot;</code> 为属性</li>
+</ul>
+<p>也可以这样写：<br><code>&lt;img src=&quot;china.jpg&quot; size=&quot;10&quot; /&gt;</code> (空元素的缩写格式)</p>
+<p><strong>XML 是基于 HTML 的一种通用表达形式 XD</strong></p>
+<p>简单说，当标签中间有内容的时候，就用一对标签来表达：<br><code>&lt;name&gt; ... &lt;/name&gt;</code></p>
+<p>没有内容的话就只用一个标签来表达：<br><code>&lt;name /&gt;</code></p>
+<p>注释：<br><code>&lt;!-- --&gt;</code></p>
+<h3 id="XML-小结"><a href="#XML-小结" class="headerlink" title="XML 小结"></a>XML 小结</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span> ... <span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>明天就是揭开 json 神秘面纱的时候了XD</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第十五天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">信息标记的三种形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A0%87%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">信息的标记</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86-Hyper-Text-Markup-Language-HTML"><span class="toc-number"></span> <span class="toc-text">重新认识 Hyper Text Markup Language(HTML)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number"></span> <span class="toc-text">信息标记的种类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XML-eXtensible-Markup-Language"><span class="toc-number"></span> <span class="toc-text">XML (eXtensible Markup Language)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XML-%E5%B0%8F%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">XML 小结</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&text=第十五天:信息标记的三种形式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&is_video=false&description=第十五天:信息标记的三种形式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第十五天:信息标记的三种形式&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&title=第十五天:信息标记的三种形式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&name=第十五天:信息标记的三种形式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F/&t=第十五天:信息标记的三种形式"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

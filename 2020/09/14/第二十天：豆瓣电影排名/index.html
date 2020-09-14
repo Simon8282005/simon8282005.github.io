@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="15&#x2F;8&#x2F;2020 豆瓣电影排名顺着昨天的‘中国最好大学排名’的列子，我改了改代码，变成了‘电影排名去了’ XD 1234567891011121314151617181920212223242526272829303132333435import requestsfrom bs4 import BeautifulSoupimport bs4def getHTMLText(url):    try">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二十天：豆瓣电影排名">
+<meta property="og:url" content="http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="15&#x2F;8&#x2F;2020 豆瓣电影排名顺着昨天的‘中国最好大学排名’的列子，我改了改代码，变成了‘电影排名去了’ XD 1234567891011121314151617181920212223242526272829303132333435import requestsfrom bs4 import BeautifulSoupimport bs4def getHTMLText(url):    try">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-14T08:46:02.000Z">
+<meta property="article:modified_time" content="2020-09-14T09:26:26.712Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Crawler">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第二十天：豆瓣电影排名</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E5%A4%A9%EF%BC%9A-%E4%B8%AD%E5%9B%BD%E6%9C%80%E5%A5%BD%E5%A4%A7%E5%AD%A6%E6%8E%92%E5%90%8D-%E5%AE%9E%E5%88%97%E4%BC%98%E5%8C%96/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E5%8D%81%E4%B9%9D%E5%A4%A9%EF%BC%9A%E2%80%9C%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E6%8E%92%E5%90%8D%E5%AE%9A%E5%90%91%E7%88%AC%E8%99%AB%E6%95%99%E5%AD%A6%E2%80%9D-%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%BC%96%E5%86%99/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&text=第二十天：豆瓣电影排名"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&is_video=false&description=第二十天：豆瓣电影排名"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第二十天：豆瓣电影排名&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&name=第二十天：豆瓣电影排名&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&t=第二十天：豆瓣电影排名"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D"><span class="toc-number">1.</span> <span class="toc-text">豆瓣电影排名</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第二十天：豆瓣电影排名
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-14T08:46:02.000Z" itemprop="datePublished">2020-09-14</time>
+        
+        (Updated: <time datetime="2020-09-14T09:26:26.712Z" itemprop="dateModified">2020-09-14</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>15/8/2020</p>
+<h1 id="豆瓣电影排名"><a href="#豆瓣电影排名" class="headerlink" title="豆瓣电影排名"></a>豆瓣电影排名</h1><p>顺着昨天的‘中国最好大学排名’的列子，我改了改代码，变成了‘电影排名去了’ XD</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> bs4</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span>(<span class="params">url</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        kv = &#123;<span class="string">&#x27;user-agent&#x27;</span>:<span class="string">&#x27;Mozilla/5.0&#x27;</span>&#125;</span><br><span class="line">        r = requests.get(url, headers = kv,timeout = <span class="number">50</span>)</span><br><span class="line">        r.raise_for_status</span><br><span class="line">        r.encoding = <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fillMoviesList</span>(<span class="params">mlist, html</span>):</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> ol <span class="keyword">in</span> soup.find(<span class="string">&#x27;ol&#x27;</span>):</span><br><span class="line">        <span class="keyword">if</span> isinstance(ol, bs4.element.Tag):</span><br><span class="line">            ols = ol(<span class="string">&#x27;span&#x27;</span>)</span><br><span class="line">            mlist.append([ols[<span class="number">0</span>].string, ols[<span class="number">1</span>].string, ols[<span class="number">2</span>].string])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printMoviesList</span>(<span class="params">mlist, num</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;名次&#x27;</span>, <span class="string">&#x27;电影名&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        m = mlist[i]</span><br><span class="line">        print(str(i)+<span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;&#123;:^10&#125;\t&#123;:^10&#125;&#x27;</span>.format(m[<span class="number">0</span>], m[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    minfo = []</span><br><span class="line">    url = <span class="string">&quot;https://movie.douban.com/top250&quot;</span></span><br><span class="line">    html = getHTMLText(url)</span><br><span class="line">    fillMoviesList(minfo, html)</span><br><span class="line">    printMoviesList(minfo, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output:</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">名次 电影名</span><br><span class="line">0.   肖申克的救赎        / The Shawshank Redemption</span><br><span class="line">1.    霸王别姬           / 再见，我的妾  /  Farewell My Concubine</span><br><span class="line">2.    阿甘正传           / Forrest Gump</span><br><span class="line">3.  这个杀手不太冷        / Léon  </span><br><span class="line">4.   泰坦尼克号          / Titanic</span><br><span class="line">5.    美丽人生           / La vita è bella</span><br><span class="line">6.    千与千寻           / 千と千尋の神隠し</span><br><span class="line">7.   辛德勒的名单        / Schindler&#x27;s List</span><br><span class="line">8.    盗梦空间           / Inception</span><br><span class="line">9.  忠犬八公的故事       / Hachi: A Dog&#x27;s Tale</span><br><span class="line">10.   海上钢琴师         / La leggenda del pianista sull&#x27;oceano</span><br><span class="line">11.   楚门的世界         / The Truman Show</span><br><span class="line">12.  三傻大闹宝莱坞      / 3 Idiots</span><br><span class="line">13.    星际穿越          / Interstellar</span><br><span class="line">14.   机器人总动员       / WALL·E </span><br><span class="line">15.   放牛班的春天       / Les choristes</span><br><span class="line">16. 大话西游之大圣娶亲   / 西遊記大結局之仙履奇緣</span><br><span class="line">17.     熔炉               / 도가니  </span><br><span class="line">18.   疯狂动物城         / Zootopia</span><br><span class="line">19.    无间道              / 無間道</span><br></pre></td></tr></table></figure>
+<p>改变不大，但最起码有比较懂得实现原理了 XD</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D"><span class="toc-number">1.</span> <span class="toc-text">豆瓣电影排名</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&text=第二十天：豆瓣电影排名"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&is_video=false&description=第二十天：豆瓣电影排名"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第二十天：豆瓣电影排名&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&title=第二十天：豆瓣电影排名"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&name=第二十天：豆瓣电影排名&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A4%A9%EF%BC%9A%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E5%90%8D/&t=第二十天：豆瓣电影排名"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

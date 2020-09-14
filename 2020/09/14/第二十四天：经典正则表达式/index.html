@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="22&#x2F;8&#x2F;2020 第二十四天经典正则表达式      ^ [ A-Za-z ] +$     由 26 个字母组成的字符串       ^ [ A-Za-z0-9 ] +$     由 26 个字母和数字组成的字符串       ^ -?\d+$     整数形式的字符串       ^ [0-9]*[1-9][0-9] *$     正数形式的字符串       [1-9]\d{5}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二十四天：经典正则表达式">
+<meta property="og:url" content="http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="22&#x2F;8&#x2F;2020 第二十四天经典正则表达式      ^ [ A-Za-z ] +$     由 26 个字母组成的字符串       ^ [ A-Za-z0-9 ] +$     由 26 个字母和数字组成的字符串       ^ -?\d+$     整数形式的字符串       ^ [0-9]*[1-9][0-9] *$     正数形式的字符串       [1-9]\d{5}">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-14T09:27:51.000Z">
+<meta property="article:modified_time" content="2020-09-14T09:30:43.454Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Crawler">
+<meta property="article:tag" content="Regular Expression">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第二十四天：经典正则表达式</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E5%A4%A9%EF%BC%9ARe-%E5%BA%93/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E5%A4%A9%EF%BC%9A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%88%97%E5%AD%90/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&text=第二十四天：经典正则表达式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&is_video=false&description=第二十四天：经典正则表达式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第二十四天：经典正则表达式&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&name=第二十四天：经典正则表达式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&t=第二十四天：经典正则表达式"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第二十四天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">经典正则表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D-IP-%E5%9C%B0%E5%9D%80%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">匹配 IP 地址的正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D"><span class="toc-number"></span> <span class="toc-text">第一种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D"><span class="toc-number"></span> <span class="toc-text">第二种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%A7%8D"><span class="toc-number"></span> <span class="toc-text">第三种</span></a>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第二十四天：经典正则表达式
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-14T09:27:51.000Z" itemprop="datePublished">2020-09-14</time>
+        
+        (Updated: <time datetime="2020-09-14T09:30:43.454Z" itemprop="dateModified">2020-09-14</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>, <a class="tag-link-link" href="/tags/Regular-Expression/" rel="tag">Regular Expression</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>22/8/2020</p>
+<h3 id="第二十四天"><a href="#第二十四天" class="headerlink" title="第二十四天"></a>第二十四天</h3><h1 id="经典正则表达式"><a href="#经典正则表达式" class="headerlink" title="经典正则表达式"></a>经典正则表达式</h1><table>
+<tr>
+    <th>^ [ A-Za-z ] +$</th>
+    <th>由 26 个字母组成的字符串</th>
+</tr>
+<tr>
+    <th>^ [ A-Za-z0-9 ] +$</th>
+    <th>由 26 个字母和数字组成的字符串</th>
+</tr>
+<tr>
+    <th>^ -?\d+$</th>
+    <th>整数形式的字符串</th>
+</tr>
+<tr>
+    <th>^ [0-9]*[1-9][0-9] *$</th>
+    <th>正数形式的字符串</th>
+</tr>
+<tr>
+    <th>[1-9]\d{5}</th>
+    <th>中国境内邮政编码，6 位</th>
+</tr>
+<tr>
+    <th>[\u4e00-\u9fa5]</th>
+    <th>匹配中文字符</th>
+</tr>
+<tr>
+    <th>\d{3}-\d{8}|\d{4}-\d{7}</th>
+    <th>电话号码，010-68913536</th>
+</tr>
+</table>
+
+<h1 id="匹配-IP-地址的正则表达式"><a href="#匹配-IP-地址的正则表达式" class="headerlink" title="匹配 IP 地址的正则表达式"></a>匹配 IP 地址的正则表达式</h1><p>IP地址字符串形式的正则表达式（IP 地址分 4 段，每段 0-255）</p>
+<h2 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h2><p><code>\d+.\d+.\d+.\d+</code></p>
+<h2 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h2><p><code>\d&#123;1, 3&#125;.\d&#123;1, 3&#125;.\d&#123;1, 3&#125;.\d&#123;1, 3&#125;</code></p>
+<p>但是，上面的两个方法不是最精准的，意思是说输出 IP 地址的时候会出现瑕疵，比如<code>300.300.300.300</code>。这是上面两种正则表达式可能会输出的结果，但是 IP 地址最多只到 <code>255</code> 啊，哪来的 <code>300</code> ！！！</p>
+<h2 id="第三种"><a href="#第三种" class="headerlink" title="第三种"></a>第三种</h2><p>想要精准的表达 IP 地址，我们可以把 0-255 的取值范围给缩小：</p>
+<figure class="highlight re"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>-<span class="number">99</span>: <span class="literal">[<span class="number">1</span>-<span class="number">9</span>]</span>?\d        <span class="number">100</span>-<span class="number">199</span>: <span class="number">1</span>\d&#123;<span class="number">2</span>&#125;</span><br><span class="line"><span class="number">200</span>-<span class="number">249</span>: <span class="number">2</span><span class="literal">[<span class="number">0</span>-<span class="number">4</span>]</span>\d     <span class="number">250</span>-<span class="number">255</span>: <span class="number">25</span><span class="literal">[<span class="number">0</span>-<span class="number">5</span>]</span>  </span><br></pre></td></tr></table></figure>
+<p>在代码里就可以这样写：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(([1-9]?\d|1\d&#123;2&#125;|2[0-4]\d|25[0-5]).)&#123;3&#125;([1-9]?\d|1\d&#123;2&#125;|2[0-4]\d|25[0-5])</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第二十四天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">经典正则表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D-IP-%E5%9C%B0%E5%9D%80%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">匹配 IP 地址的正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D"><span class="toc-number"></span> <span class="toc-text">第一种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D"><span class="toc-number"></span> <span class="toc-text">第二种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%A7%8D"><span class="toc-number"></span> <span class="toc-text">第三种</span></a>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&text=第二十四天：经典正则表达式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&is_video=false&description=第二十四天：经典正则表达式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第二十四天：经典正则表达式&body=Check out this article: http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=第二十四天：经典正则表达式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&name=第二十四天：经典正则表达式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/14/%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%A4%A9%EF%BC%9A%E7%BB%8F%E5%85%B8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&t=第二十四天：经典正则表达式"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
