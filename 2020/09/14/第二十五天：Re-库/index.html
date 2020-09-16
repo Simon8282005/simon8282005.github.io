@@ -13,12 +13,14 @@
 <meta property="og:site_name" content="章鱼哥的个人空间">
 <meta property="og:description" content="25&#x2F;8&#x2F;2020 第二十五天什么是 re 库 ？Re 库是 Python 的标准库，主要用于字符串匹配 正则表达式的表示类型raw string 类型 原生字符串类型  re 库采用 raw string 类型表示正则表达式，表示为： r &#39; text &#39;  raw string 意思是不包含转义符的字符串  例如： 12r &amp;#x27;[1-9]\d&amp;#123;5&amp;#125;&amp;">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Simon8282005/images.github.io/master/img/Screenshot_2020-09-16_13-22-14.png">
 <meta property="article:published_time" content="2020-09-14T09:27:59.000Z">
-<meta property="article:modified_time" content="2020-09-15T14:10:07.036Z">
+<meta property="article:modified_time" content="2020-09-16T05:29:40.932Z">
 <meta property="article:author" content="Simon">
 <meta property="article:tag" content="Crawler">
 <meta property="article:tag" content="Regular Expression">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Simon8282005/images.github.io/master/img/Screenshot_2020-09-16_13-22-14.png">
     
     
         
@@ -105,7 +107,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第二十五天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-re-%E5%BA%93-%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">什么是 re 库 ？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%A1%A8%E7%A4%BA%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">正则表达式的表示类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#raw-string-%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">raw string 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string-%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">string 类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0"><span class="toc-number"></span> <span class="toc-text">Re 库的主要功能函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number"></span> <span class="toc-text">Re 库的主要功能函数说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#re-search-pattern-string-flags-0"><span class="toc-number">1.</span> <span class="toc-text">re.search( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-match-pattern-string-flags-0"><span class="toc-number">2.</span> <span class="toc-text">re.match( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-findall-pattern-string-flags-0"><span class="toc-number">3.</span> <span class="toc-text">re.findall( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-split-pattern-string-maxsplit-0-flags-0"><span class="toc-number">4.</span> <span class="toc-text">re.split( pattern, string, maxsplit &#x3D; 0, flags &#x3D; 0 )</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第二十五天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-re-%E5%BA%93-%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">什么是 re 库 ？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%A1%A8%E7%A4%BA%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">正则表达式的表示类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#raw-string-%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">raw string 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string-%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">string 类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0"><span class="toc-number"></span> <span class="toc-text">Re 库的主要功能函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number"></span> <span class="toc-text">Re 库的主要功能函数说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#re-search-pattern-string-flags-0"><span class="toc-number">1.</span> <span class="toc-text">re.search( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-match-pattern-string-flags-0"><span class="toc-number">2.</span> <span class="toc-text">re.match( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-findall-pattern-string-flags-0"><span class="toc-number">3.</span> <span class="toc-text">re.findall( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-split-pattern-string-maxsplit-0-flags-0"><span class="toc-number">4.</span> <span class="toc-text">re.split( pattern, string, maxsplit &#x3D; 0, flags &#x3D; 0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-finditer-pattern-string-flags-0"><span class="toc-number">5.</span> <span class="toc-text">re.finditer( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-sub-pattern-repl-string-count-0-flags-0"><span class="toc-number">6.</span> <span class="toc-text">re.sub( pattern, repl, string, count&#x3D;0, flags&#x3D;0 )</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E5%8F%A6%E5%A4%96%E4%B8%80%E7%A7%8D%E7%AD%89%E4%BB%B7%E7%94%A8%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">Re 库的另外一种等价用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#regex-re-compile-pattern-flags-0"><span class="toc-number">1.</span> <span class="toc-text">regex &#x3D; re.compile( pattern, flags&#x3D;0 )</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -131,7 +133,7 @@
       
         <time datetime="2020-09-14T09:27:59.000Z" itemprop="datePublished">2020-09-14</time>
         
-        (Updated: <time datetime="2020-09-15T14:10:07.036Z" itemprop="dateModified">2020-09-15</time>)
+        (Updated: <time datetime="2020-09-16T05:29:40.932Z" itemprop="dateModified">2020-09-16</time>)
         
       
     </div>
@@ -234,7 +236,7 @@
 <p>从一个字符串的开始位置起匹配正则表达式，返回 match 对象</p>
 <ul>
 <li>pattern： 正则表达式字符串或原生字符串表示</li>
-<li>string：带匹配字符串</li>
+<li>string：待匹配字符串</li>
 <li>flags：正则表达式使用时的控制标记</li>
 </ul>
 </blockquote>
@@ -273,8 +275,55 @@
 <li>flags：正则表达式使用时的控制标记</li>
 </ul>
 </blockquote>
-<p>re.split 列子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">ls = re.split(<span class="string">r&#x27;[1-9]\d&#123;5&#125;&#x27;</span>, <span class="string">&#x27;BIT100081 TSU100084&#x27;</span>)</span><br><span class="line">print(ls)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output：</span></span><br><span class="line">[<span class="string">&#x27;BIT&#x27;</span>, <span class="string">&#x27; TSU&#x27;</span>, <span class="string">&#x27;&#x27;</span>]  <span class="comment"># 匹配到的号码被丢掉了</span></span><br><span class="line"></span><br><span class="line">ls2 = re.split(<span class="string">r&#x27;[1-9]\d&#123;5&#125;&#x27;</span>, <span class="string">&#x27;BIT100081 TSU100084&#x27;</span>, maxsplit = <span class="number">1</span>)</span><br><span class="line">print(ls2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output：</span></span><br><span class="line">[<span class="string">&#x27;BIT&#x27;</span>, <span class="string">&#x27; TSU100084&#x27;</span>]  <span class="comment"># 只匹配第一个位置</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>re.split 列子：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">ls = re.split(<span class="string">r&#x27;[1-9]\d&#123;5&#125;&#x27;</span>, <span class="string">&#x27;BIT100081 TSU100084&#x27;</span>)</span><br><span class="line">print(ls)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output：</span></span><br><span class="line">[<span class="string">&#x27;BIT&#x27;</span>, <span class="string">&#x27; TSU&#x27;</span>, <span class="string">&#x27;&#x27;</span>]  <span class="comment"># 匹配到的号码被丢掉了</span></span><br><span class="line"></span><br><span class="line">ls2 = re.split(<span class="string">r&#x27;[1-9]\d&#123;5&#125;&#x27;</span>, <span class="string">&#x27;BIT100081 TSU100084&#x27;</span>, maxsplit = <span class="number">1</span>)</span><br><span class="line">print(ls2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output：</span></span><br><span class="line">[<span class="string">&#x27;BIT&#x27;</span>, <span class="string">&#x27; TSU100084&#x27;</span>]  <span class="comment"># 只匹配第一个位置</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="re-finditer-pattern-string-flags-0"><a href="#re-finditer-pattern-string-flags-0" class="headerlink" title="re.finditer( pattern, string, flags=0 )"></a>re.finditer( pattern, string, flags=0 )</h3><blockquote>
+<p>搜素字符串，返回一个匹配结果的迭代类型，每个迭代元素是 match 对象</p>
+</blockquote>
+<blockquote>
+<p>pattern, string, flags 同上</p>
+</blockquote>
+<ul>
+<li>re.finditer 列子：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> re.finditer(<span class="string">r&#x27;[1-9]\d&#123;5&#125;&#x27;</span>, <span class="string">&#x27;BIT100081 TSU100084&#x27;</span>):</span><br><span class="line">    <span class="keyword">if</span> m:</span><br><span class="line">        print(m.group(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output：</span></span><br><span class="line"><span class="number">100081</span></span><br><span class="line"><span class="number">100084</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="re-sub-pattern-repl-string-count-0-flags-0"><a href="#re-sub-pattern-repl-string-count-0-flags-0" class="headerlink" title="re.sub( pattern, repl, string, count=0, flags=0 )"></a>re.sub( pattern, repl, string, count=0, flags=0 )</h3><blockquote>
+<p>在一个字符串中替换所有匹配正则表达式的子串， 返回替换后的字符串</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>pattern： 正则表达式字符串或原生字符串表示</li>
+<li>repl: 替换匹配字符串的字符串</li>
+<li>string：待匹配字符串</li>
+<li>count：匹配的最大替换次数</li>
+<li>flags：正则表达式使用时的控制标记</li>
+</ul>
+</blockquote>
+<ul>
+<li>re.sub 列子：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">ls = re.sub(<span class="string">r&#x27;[1-9]\d&#123;5&#125;&#x27;</span>, <span class="string">&#x27;:zipcode&#x27;</span>, <span class="string">&#x27;BIT100081 TSU100084&#x27;</span>)</span><br><span class="line">print(ls)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output：</span></span><br><span class="line">BIT:zipcode TSU:zipcode</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h2 id="Re-库的另外一种等价用法"><a href="#Re-库的另外一种等价用法" class="headerlink" title="Re 库的另外一种等价用法"></a>Re 库的另外一种等价用法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rst = re.search(<span class="string">r&#x27;[1-9]\d&#123;5&#125;&#x27;</span>, <span class="string">&#x27;BIT 100081&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这种方法称之为 <code>函数式用法</code> 比较适合一次性的操作</p>
+<p>那么需要多次操作的时候，就要使用 <code>面向对象用法</code>， 这个方法就是将一个字符串编译后才进行其他的多次操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pat = re.compile(<span class="string">r&#x27;[1-9]\d&#123;5&#125;&#x27;</span>)</span><br><span class="line">rst = pat.search(<span class="string">&#x27;BIT 100081&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这种方法当我们需要多次使用这个字符串的话，会比 <code>函数式用法</code> 来的方便 XD</p>
+<hr>
+<h3 id="regex-re-compile-pattern-flags-0"><a href="#regex-re-compile-pattern-flags-0" class="headerlink" title="regex = re.compile( pattern, flags=0 )"></a>regex = re.compile( pattern, flags=0 )</h3><blockquote>
+<p>将正则表达式的字符串形式编译成正则表达式对象</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Simon8282005/images.github.io/master/img/Screenshot_2020-09-16_13-22-14.png"></p>
+<p><code>regex</code> 才是我们所谓的 <code>正则表达式对象</code>， 而 <code>r[1-9]\d&#123;5&#125;</code> 则是 <code>原生字符串</code></p>
 
   </div>
 </article>
@@ -298,7 +347,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第二十五天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-re-%E5%BA%93-%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">什么是 re 库 ？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%A1%A8%E7%A4%BA%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">正则表达式的表示类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#raw-string-%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">raw string 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string-%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">string 类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0"><span class="toc-number"></span> <span class="toc-text">Re 库的主要功能函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number"></span> <span class="toc-text">Re 库的主要功能函数说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#re-search-pattern-string-flags-0"><span class="toc-number">1.</span> <span class="toc-text">re.search( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-match-pattern-string-flags-0"><span class="toc-number">2.</span> <span class="toc-text">re.match( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-findall-pattern-string-flags-0"><span class="toc-number">3.</span> <span class="toc-text">re.findall( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-split-pattern-string-maxsplit-0-flags-0"><span class="toc-number">4.</span> <span class="toc-text">re.split( pattern, string, maxsplit &#x3D; 0, flags &#x3D; 0 )</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">第二十五天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-re-%E5%BA%93-%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">什么是 re 库 ？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%A1%A8%E7%A4%BA%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">正则表达式的表示类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#raw-string-%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">raw string 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string-%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">string 类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0"><span class="toc-number"></span> <span class="toc-text">Re 库的主要功能函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number"></span> <span class="toc-text">Re 库的主要功能函数说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#re-search-pattern-string-flags-0"><span class="toc-number">1.</span> <span class="toc-text">re.search( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-match-pattern-string-flags-0"><span class="toc-number">2.</span> <span class="toc-text">re.match( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-findall-pattern-string-flags-0"><span class="toc-number">3.</span> <span class="toc-text">re.findall( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-split-pattern-string-maxsplit-0-flags-0"><span class="toc-number">4.</span> <span class="toc-text">re.split( pattern, string, maxsplit &#x3D; 0, flags &#x3D; 0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-finditer-pattern-string-flags-0"><span class="toc-number">5.</span> <span class="toc-text">re.finditer( pattern, string, flags&#x3D;0 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-sub-pattern-repl-string-count-0-flags-0"><span class="toc-number">6.</span> <span class="toc-text">re.sub( pattern, repl, string, count&#x3D;0, flags&#x3D;0 )</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Re-%E5%BA%93%E7%9A%84%E5%8F%A6%E5%A4%96%E4%B8%80%E7%A7%8D%E7%AD%89%E4%BB%B7%E7%94%A8%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">Re 库的另外一种等价用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#regex-re-compile-pattern-flags-0"><span class="toc-number">1.</span> <span class="toc-text">regex &#x3D; re.compile( pattern, flags&#x3D;0 )</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
