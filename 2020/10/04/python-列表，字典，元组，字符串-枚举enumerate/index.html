@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="python(列表，字典，元组，字符串,枚举enumerate)huo_1214 2018-01-29 18:09:28 5668 收藏 5版权 一、列表相关知识1.1 什么是列表？#列表&#x2F;序列&#x2F;数组 #容器类型，一般是用来存储数据 #列表，可以用来存储各种各样的数据，列表存储的数据有顺序 #列表数据都有索引 第一条数据的索引为0，以此类推12345.。 1.2 添加数据#1.使用append()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python(列表，字典，元组，字符串,枚举enumerate)">
+<meta property="og:url" content="http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="python(列表，字典，元组，字符串,枚举enumerate)huo_1214 2018-01-29 18:09:28 5668 收藏 5版权 一、列表相关知识1.1 什么是列表？#列表&#x2F;序列&#x2F;数组 #容器类型，一般是用来存储数据 #列表，可以用来存储各种各样的数据，列表存储的数据有顺序 #列表数据都有索引 第一条数据的索引为0，以此类推12345.。 1.2 添加数据#1.使用append()">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-04T00:40:57.000Z">
+<meta property="article:modified_time" content="2020-10-04T01:02:27.107Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>python(列表，字典，元组，字符串,枚举enumerate)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/10/06/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E5%A4%A9%EF%BC%9AArduino%EF%BC%81%E4%BD%A0%E5%A5%BD%EF%BC%81/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/10/03/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%80%E5%A4%A9%EF%BC%9A%E6%B8%A9%E6%95%85%E7%9F%A5%E6%96%B0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&text=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&is_video=false&description=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=python(列表，字典，元组，字符串,枚举enumerate)&body=Check out this article: http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&name=python(列表，字典，元组，字符串,枚举enumerate)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&t=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%97%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">一、列表相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%97%E8%A1%A8%EF%BC%9F"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 什么是列表？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 添加数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3 修改数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.4.</span> <span class="toc-text">1.4 删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.5.</span> <span class="toc-text">1.5 查询数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.6.</span> <span class="toc-text">1.6 其他函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAcount%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.7.</span> <span class="toc-text">1.7 自己实现一个count函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAindex%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.8.</span> <span class="toc-text">1.8 自己实现一个index函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%97%E5%85%B8"><span class="toc-number">2.</span> <span class="toc-text">二、字典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E5%85%B8%EF%BC%9F"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1 什么是字典？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2 添加数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">2.0.3.</span> <span class="toc-text">2.3 删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-number">2.0.4.</span> <span class="toc-text">2.4 获取数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%83%E7%BB%84"><span class="toc-number">3.</span> <span class="toc-text">三、元组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%83%E7%BB%84%EF%BC%9F"><span class="toc-number">3.0.1.</span> <span class="toc-text">3.1 什么是元组？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%8E%B7%E5%8F%96%E5%85%83%E7%BB%84%E6%95%B0%E6%8D%AE"><span class="toc-number">3.0.2.</span> <span class="toc-text">3.2 获取元组数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%88%97%E8%A1%A8%E5%85%83%E7%A5%96%E5%B5%8C%E5%A5%97"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.3 列表元祖嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-number">3.0.4.</span> <span class="toc-text">3.4 其他函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.</span> <span class="toc-text">四、字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%A8%E6%B3%95"><span class="toc-number">4.0.1.</span> <span class="toc-text">4.1字符串用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="toc-number">4.0.2.</span> <span class="toc-text">4.2 字符串的拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E5%AD%97%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.0.3.</span> <span class="toc-text">4.3 字符串和数字之间的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E7%BB%83%E4%B9%A0"><span class="toc-number">4.0.4.</span> <span class="toc-text">4.4 练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-number">4.0.5.</span> <span class="toc-text">4.5 其他函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">4.0.6.</span> <span class="toc-text">4.6 常用函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9E%9A%E4%B8%BEenumerate"><span class="toc-number">5.</span> <span class="toc-text">五、枚举enumerate()</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        python(列表，字典，元组，字符串,枚举enumerate)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-10-04T00:40:57.000Z" itemprop="datePublished">2020-10-04</time>
+        
+        (Updated: <time datetime="2020-10-04T01:02:27.107Z" itemprop="dateModified">2020-10-04</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>python(列表，字典，元组，字符串,枚举enumerate)<br>huo_1214 2018-01-29 18:09:28 5668 收藏 5<br>版权</p>
+<h1 id="一、列表相关知识"><a href="#一、列表相关知识" class="headerlink" title="一、列表相关知识"></a>一、列表相关知识</h1><h3 id="1-1-什么是列表？"><a href="#1-1-什么是列表？" class="headerlink" title="1.1 什么是列表？"></a>1.1 什么是列表？</h3><pre><code>#列表/序列/数组
+#容器类型，一般是用来存储数据
+#列表，可以用来存储各种各样的数据，列表存储的数据有顺序
+#列表数据都有索引 第一条数据的索引为0，以此类推12345.。</code></pre>
+<h3 id="1-2-添加数据"><a href="#1-2-添加数据" class="headerlink" title="1.2 添加数据"></a>1.2 添加数据</h3><pre><code>#1.使用append()函数，向列表中追加数据,会把添加的数据放在列表的最后
+#object：对象，要添加到列表中的数据
+list_1.append(&#39;2018-1-23&#39;)
+print(list_1)
+#2.使用insert(index,object) 函数，向列表中插入一条数据
+# index 索引 object 要插入的数据 如果超出最大索引，会将数据放在列表最后。若index为负值，位置会从后向前查找，最后一条数据索引为-1
+list_1.insert(4,&#39;oppo&#39;)
+print(list_1)
+#3.使用extend()函数，可以将一个可迭代对象的所有数据追加到该列表中
+#extend(iterable)
+#可迭代对象   例如： 列表 字符串 字典 元组
+list_2 =[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;e&#39;,&#39;f&#39;]
+list_1.extend(list_2)
+print(list_1)</code></pre>
+<h3 id="1-3-修改数据"><a href="#1-3-修改数据" class="headerlink" title="1.3 修改数据"></a>1.3 修改数据</h3><pre><code>#index()函数 可以根据数据，查找数据的索引
+#1.数据 2. 开始搜索的位置3.结束搜索的位置
+#如果数据不在列表中（或不在指定范围），会出现异常错误
+# &#39;hello&#39; is not in list 原因1：列表中确实没有该元素 原因2：指定的范围没有该元素
+index = list_1.index(&#39;oppo&#39;,0,5)
+print(index)
+list_1[3] = True
+print(list_1)
+#根据索引修改数据
+list_1[index] = &#39;vivo&#39;
+print(list_1)</code></pre>
+<h3 id="1-4-删除数据"><a href="#1-4-删除数据" class="headerlink" title="1.4 删除数据"></a>1.4 删除数据</h3><pre><code>#1.根据索引删除数据
+#delete: 删除
+del list_1[4]
+print(list_1)
+# 2.pop(index) 从列表中将数据移出，移出之后列表中就不存在数据了
+# index 可以指定取出数据的索引，如果不指定的话，默认取出最后一条数据
+s = list_1.pop(2)
+print(s)
+print(list_1)
+# 3.remove(object) 根据数据内容 从列表中移除数据
+# object 要删除的数据
+# list.remove(x): x not in list  要删除的数据不在列表中
+# 判断数据是否在列表
+# object in list 如果object在列表中，返回True，不在 返回False
+# object not in list  如果object不在列表中 返回True  在 返回False
+if &#39;ssss&#39;  in list_1:
+    list_1.remove(&#39;ssss&#39;)
+else:
+    print(&#39;ssss不在列表中，无法执行删除操作！&#39;)
+#4.移除列表中所有的数据
+#clear:清除
+# list_1.clear()
+# print(list_1)</code></pre>
+<h3 id="1-5-查询数据"><a href="#1-5-查询数据" class="headerlink" title="1.5 查询数据"></a>1.5 查询数据</h3><pre><code># 1.根据索引取出列表中数据，取出之后列表中还有数据
+s = list_1[2]
+print(s)
+print(list_1)
+# 2.使用pop()函数，取出列表中数据，取出之后列表中的数据就会移除
+s = list_1.pop(2)
+print(s)
+print(list_1)
+
+# 3.列表切片，切片之后会得到一个新列表
+# start:stop   包含start 不包含stop
+# start开始位置，一定要小于stop结束位置，否则截取出来就是一个空列表
+result = list_1[3:5]
+print(result)
+
+#[:结束位置]  从第0个位置开始切片，一直到结束位置（不包含结束位置）
+result = list_1[:5]
+print(result)
+
+#[开始位置：] 从开始位置开始切片，知道列表中最后一个元素
+result = list_1[3:]
+print(result)
+
+#开始位置一定要小于结束位置，否则会出现结果为空列表的情况
+result = list_1[4:2]
+print(result)
+
+#填写负值
+result = list_1[-5:-1]
+print(result)
+
+# 4.取出列表中的所有数据
+# 使用for循环，遍历列表
+# range(start,stop,step)
+# start 范围的开始位置  stop 范围结束的位置  step x的增量 默认为1
+# range范围 包含start 不包含stop
+# 遍历列表：将列表中的所有数据一个一个取出来
+# len() 获取列表中存放的数据个数
+length = len(list_1)
+print(&#39;列表中存放数据的个数为：%s&#39; % length)
+for x in range(0, len(list_1)):
+    # 把x的值作为索引，取出列表中的数据
+    s = list_1[x]
+    print(s)
+# 泛型遍历
+for s in list_1:
+    print(s)</code></pre>
+<h3 id="1-6-其他函数"><a href="#1-6-其他函数" class="headerlink" title="1.6 其他函数"></a>1.6 其他函数</h3><pre><code>#列表的其他函数
+list_3 = [4,5,11,88,44,33.4,67,28,1,1,1,1,1,1,1,1]
+#sort() 排序函数 默认升序排列
+#指定降序排列
+list_3.sort(reverse=True)
+#默认升序
+# list_3.sort()
+print(list_3)
+#reverse()反向排序
+list_3.reverse()
+print(list_3)
+#count()函数 统计某条数据在列表中出现的次数
+count = list_3.count(1)
+print(&#39;出现的次数：&#39;, count)</code></pre>
+<h3 id="1-7-自己实现一个count函数"><a href="#1-7-自己实现一个count函数" class="headerlink" title="1.7 自己实现一个count函数"></a>1.7 自己实现一个count函数</h3><pre><code>def COUNT(list_1,object):
+    count = 0
+    for content in list_1:
+        if content == object:
+            count +=1
+    return count
+    # 如果有返回object在list_1中出现的次数
+    # 如果没有 返回0
+list_1 =[1,1,1,2,&#39;hello&#39;,False,3.14,&#39;world&#39;]
+count = COUNT(list_1,1)
+print(count)</code></pre>
+<h3 id="1-8-自己实现一个index函数"><a href="#1-8-自己实现一个index函数" class="headerlink" title="1.8 自己实现一个index函数"></a>1.8 自己实现一个index函数</h3><pre><code>def INDEX(list_1,object):
+    index_list = []
+    if object in list_1:
+        #enumerate 枚举
+        #  拿到之后 一个一个的小元组，小元组中放的是数据索引和数据
+        for item in enumerate(list_1):
+            # item[1] 取出小元组中的数据
+            if item[1] == object:
+                # item[0] 数据对应的索引
+                index_list.append(item[0])
+        # 如果有元素返回object在list_1中的索引
+        # 如果没有返回-1
+        return index_list
+
+index_list = INDEX(list_1,1)
+print(index_list)</code></pre>
+<h1 id="二、字典"><a href="#二、字典" class="headerlink" title="二、字典"></a>二、字典</h1><h3 id="2-1-什么是字典？"><a href="#2-1-什么是字典？" class="headerlink" title="2.1 什么是字典？"></a>2.1 什么是字典？</h3><pre><code># 字典用法
+# 字典：python 中一个内置的容器类，具有增添改查的操作
+# 字典中存储数据的特点
+# 1.字典存数数据 遵循ket:value(键值对)形式进行数据存储，一个key(键)对应一个值（value),使用键来替代列表中的索引，所有的增删改查都是通过key（键）完成的
+# 2.字典中存储的数据是无序的
+# 3. key(键）必须是惟一的，必须是不可变
+# PEP8 编码规范 标点符号后面跟个空白格（空格）
+dict1 = &#123;&#39;name&#39;: &#39;张三&#39;, &#39;age&#39;: 22, &#39;phone&#39;: 110&#125;
+print(dict1)</code></pre>
+<h3 id="2-2-添加数据"><a href="#2-2-添加数据" class="headerlink" title="2.2 添加数据"></a>2.2 添加数据</h3><pre><code># 添加数据,如果字典中没有这个key，做添加数据操作
+dict1[&#39;sex&#39;] = &#39;男&#39;
+print(dict1)
+#如果字典中有这个key，做修改数据操作
+dict1[&#39;sex&#39;] = &#39;女&#39;
+print(dict1)</code></pre>
+<h3 id="2-3-删除数据"><a href="#2-3-删除数据" class="headerlink" title="2.3 删除数据"></a>2.3 删除数据</h3><pre><code># 1.根据key删除字典中的数据
+del dict1[&#39;sex&#39;]
+print(dict1)
+#2.使用pop(key)移出字典中对应key的元素
+name = dict1.pop(&#39;name&#39;)
+print(name)
+# 3.随机从字典中取出一堆键值对，取出的是小元组
+rs = dict1.popitem()
+print(rs)
+#4.清空字典中所有键值对
+# dict1.clear()</code></pre>
+<h3 id="2-4-获取数据"><a href="#2-4-获取数据" class="headerlink" title="2.4 获取数据"></a>2.4 获取数据</h3><pre><code>#1.获取字典中所有的key
+keys = dict1.keys()
+#for 循环遍历key，根据key取出对应的value
+for key in keys:
+    value = dict1[key]
+
+#2.获取字典中所有的value值
+values = dict1.values()
+for value in values:
+    print(value)
+#3.获取字典中所有key和值（key，value）元组
+items = dict1.items()
+#for 循环遍历items
+for key,value in items:
+    print(key,value)
+
+# 4.判断字典中是否拥有某个key
+# python2 直接使用 dict1.has_key(key)  如果key存在，返回True 不存在 返回False
+# python3 使用 key in  dict1.keys 如果存在返回True 不存在 返回False
+# key not in dict1.keys()  如果存在返回False  不存在返回True
+if &#39;name&#39; in dict1.keys():
+    print(&#39;字典中有name这个key&#39;)
+else:
+    print(&#39;字典中没有name这个key&#39;)</code></pre>
+<h1 id="三、元组"><a href="#三、元组" class="headerlink" title="三、元组"></a>三、元组</h1><h3 id="3-1-什么是元组？"><a href="#3-1-什么是元组？" class="headerlink" title="3.1 什么是元组？"></a>3.1 什么是元组？</h3><pre><code># 1.tuple元组的用法
+# 元组也是python 内置的一个容器类，
+# 元组中的数据一旦确定就不可更改，不能进行添加、删除、 修改的操作
+# 可以认为元组就是一个不可变的列表（list)
+# 声明元组,如果元组中只有一个元素，在python2 中，必须在元素后添加一个，逗号,python3中可以不用加
+tuple_1 = (3.14,&#39;hello&#39;,&#39;world&#39;,3,4,6,7)
+print(tuple_1)
+# 声明一个元组时，可以省略小括号，这种方式也可以生成一个元祖
+tuple_2 = 1,2,3,4,5,6,7,8
+print(type(tuple_2))</code></pre>
+<h3 id="3-2-获取元组数据"><a href="#3-2-获取元组数据" class="headerlink" title="3.2 获取元组数据"></a>3.2 获取元组数据</h3><pre><code># 1.根据索引取出元组中的数据
+num = tuple_1[0]
+print(num)
+# 2.元组也支持切片操作,切片之后返回一个新的元组
+result = tuple_1[1:3]
+print(result)
+# 元组支持for循环遍历
+for x in range(0,len(tuple_1)):
+    # 把x的值作为索引，取出数据
+    content = tuple_1[x]
+    print(content)
+# for 循环遍历
+for content in tuple_1:
+    print(content)
+# 3.使用枚举
+rs = enumerate(tuple_1)
+# for循环遍历枚举对象
+# for item in rs:
+    # print(item)
+for index,value in rs:
+    # index就是小元组中的索引，value就是小元组中的数据
+    print(index,value)</code></pre>
+<h3 id="3-3-列表元祖嵌套"><a href="#3-3-列表元祖嵌套" class="headerlink" title="3.3 列表元祖嵌套"></a>3.3 列表元祖嵌套</h3><pre><code># 列表元组嵌套
+list1 = [[&#39;张三&#39;,22,110],[&#39;李四&#39;,22,239],(1,2,3),(3,2,1)]
+# 元组嵌套列表，元组不可修改，但是元组中的列表可以进行修改
+tuple1 = (1,2,[&#39;张三&#39;,22,112],(3,2,1))
+tuple1[2].append(&#39;hello&#39;)
+print(tuple1)
+# 列表和元组中间可以互相转换
+list2 = [1,2,3,4]
+# 把列表转换为元组
+tuple2 = tuple(list2)
+print(type(tuple2))
+# 把元组转换为列表
+list2 = list(tuple2)
+print(type(list2))</code></pre>
+<h3 id="3-4-其他函数"><a href="#3-4-其他函数" class="headerlink" title="3.4 其他函数"></a>3.4 其他函数</h3><pre><code># index（x,start,end)查找某个元素在元祖中的位置
+# x 指要查找索引的元素 start 开始查找的位置 end结束查找的位置
+# 查找位置 如果不指定 从开始位置到末尾查找 指定位置从start开始到end之前，不包含end
+index = tuple2.index(3,0,3)
+print(index)
+# count(x)统计某个元素在元祖中出现的次数
+# x 要查找出现次数的元素
+count = tuple2.count(1)
+print(count)</code></pre>
+<h1 id="四、字符串"><a href="#四、字符串" class="headerlink" title="四、字符串"></a>四、字符串</h1><h3 id="4-1字符串用法"><a href="#4-1字符串用法" class="headerlink" title="4.1字符串用法"></a>4.1字符串用法</h3><pre><code># 字符串的用法
+string1=&#39;abcd&#39;
+string2=&quot;abcd&quot;
+# &#39;&#39;&#39; &#39;&#39;&#39;三个单引号对，声明的字符串，会保留其格式
+string3=&#39;&#39;&#39;
+        1.猜猜看
+        2.就不猜
+        3.猜不猜
+        4.拜拜 
+        &#39;&#39;&#39;
+print(string3)
+string4=&quot;&quot;&quot;
+        1....
+        2....
+        3....
+        4....
+        &quot;&quot;&quot;
+print(string4)
+print([string4])
+#r&#39;&#39; 原样字符串,不会将字符串中的转义字符进行转义，会原样的输出
+print(r&#39;1\n2&#39;)</code></pre>
+<h3 id="4-2-字符串的拼接"><a href="#4-2-字符串的拼接" class="headerlink" title="4.2 字符串的拼接"></a>4.2 字符串的拼接</h3><pre><code>#1. 使用占位符拼接字符串
+a = 100
+b = 200
+# %d 整数占位符,在字符串中，如果只有一个占位符，不需要在后面加（），只需要%变量名，如果有两个以上占位符，就需要将变量放在（）小括号中%（a,b）
+string5 = &#39;a的值为：%d,b的值为：%d&#39;%(a,b)
+print(string5)
+# %f 小数类型占位符
+# %.2f 保留小数点后两位
+a = 1.1111
+b = 2.9999
+string6 = &#39;a的值为：%.2f,b的值为：%f&#39;%(a,b)
+print(string6)
+
+# %s 通用占位符，字符串、整数、小数、字典、元组、列表。。。都可以使用这个占位符
+list1 = [&#39;张三&#39;,22,120]
+print(&#39;这个列表的内容为：%s&#39;%list1)
+#2.使用+号，拼接字符串
+name = &#39;张三&#39;
+age = &#39;22&#39;
+phone = &#39;110&#39;
+result = &#39;姓名：&#39; + name + &#39;\n年龄：&#39; + age + &#39;\n手机：&#39; + phone
+print(result)
+#字符串的乘法运算
+name= name * 10
+print(name)
+
+# 3.format()函数 格式化字符串
+string7 = &#39;再过&#123;&#125;天该放假了！&#39;.format(8)
+print(string7)
+# &#123;&#125;大括号中如果不填索引的话，默认从0开始取值，然后依次向后取值
+string8 = &#39;今天是周&#123;2&#125;，明天是周&#123;1&#125;，后天是周&#123;0&#125;&#39;.format(&#39;一&#39;,&#39;二&#39;,&#39;三&#39;)
+print(string8)
+#&#123;&#125;大括号中内容是后面format中的索引，默认从0开始，依次向后加1，也可以在&#123;&#125;中指定取出的数据索引
+string9 = &#39;姓名：&#123;2&#125; 年龄：&#123;0&#125; 性别：&#123;1&#125; 电话：&#123;3&#125;&#39;.format(&#39;22&#39;,&#39;男&#39;,&#39;张三&#39;,&#39;110&#39;)
+print(string9)</code></pre>
+<h3 id="4-3-字符串和数字之间的转换"><a href="#4-3-字符串和数字之间的转换" class="headerlink" title="4.3 字符串和数字之间的转换"></a>4.3 字符串和数字之间的转换</h3><pre><code>#字符串和数字之间的转换
+string10 = &#39;1234523456&#39;
+#使用int()把一个纯数字的字符串转换为整数
+# ValueError: invalid literal for int() with base 10: &#39;1234abcd890&#39;
+numbers1 = int(string10)
+print(numbers1)
+print(type(numbers1))
+string11 = &#39;3.1415&#39;
+# 使用float()转换为浮点类型的数据,也要求要转字符串必须为纯数字
+numbers2 = float(string11)
+print(type(numbers2))
+print(numbers2)
+#把float或int转换为字符串
+string12 = str(numbers2)
+print(type(string12))</code></pre>
+<h3 id="4-4-练习"><a href="#4-4-练习" class="headerlink" title="4.4 练习"></a>4.4 练习</h3><p>找到qwer的位置：</p>
+<pre><code>老师的方法：
+string13 = &#39;dweqgfyufyrqwerhfiahfvjdqwerlvjfdlv&#39;
+#找到qwer的位置,使用find函数，如果找到返回的是小字符串开始的位置，如果没找到返回的是-1
+# sub 要查找位置的字符串 start开始查找的位置 end结束查找的位置
+# index = string13.find(&#39;qwer&#39;,3,60)
+# print(index)
+
+def FIND(string,sub,start=0,stop=-1):
+    &#39;&#39;&#39;
+    1.for 循环遍历字符串，根据小字符串的长度对大字符串进行截取，并且截取出的字符串必须跟小字符串长度一致
+    2.如果截取的字符串和小字符串长度一致，判断俩个字符是否一致，如果一致说明该字符串就是要查找的字符串，直接return x的值（开始位置）
+    3.如果for循环执行完毕 meiyoufanhui9一个结果，直接返回-1 表示没找到
+    &#39;&#39;&#39;
+    if stop == -1:
+        stop = len(string)
+    for x in range(start,stop):
+        #x可以作为截取字符串的开始位
+        #end= x+len(sub)作为截取的结束位置
+        end= x + len(sub)
+        #截取字符串
+        sub_str = string[x:end]
+        #判断字符串是否一致
+        if len(sub_str) == len(sub):
+            #如果截取的字符串也等于小字符串，说明找到了
+            if sub_str == sub:
+                print(&#39;找到&#123;&#125;的位置为&#123;&#125;&#39;.format(sub,x))
+                return x
+        else:
+            break
+    #没有找到字符串，返回-1
+    return -1
+print(FIND(string13,&#39;qwer&#39;))
+
+#我的查找qwerde 位置
+    # for x in range(0, len(string)):
+    #     if string13[x] == &#39;q&#39;:
+    #         s = string13[x:x+4]
+    #         if s == &#39;qwer&#39;:
+    #             print(&#39;qwer的位置：&#39;,x)</code></pre>
+<h3 id="4-5-其他函数"><a href="#4-5-其他函数" class="headerlink" title="4.5 其他函数"></a>4.5 其他函数</h3><pre><code>list1 = [1,2,3,4,5,6,7]
+#len(列表) 获取列表中存放数据的个数
+print(len(list1))
+string = &#39;hfwhrfuigbdfhasfgvbahguyweg&#39;
+#len(字符串) 获取字符串的长度
+print(len(string))
+#字符串中的每一个字符都是有索引的 第一个索引为0，第二个为1，以此类推。
+content= string[3]
+print(content)
+#字符串支持切片特性
+rs= string[:4]
+print(rs)
+rs = string[4:8]
+print(rs)
+rs = string[4:]
+print(rs)</code></pre>
+<h3 id="4-6-常用函数"><a href="#4-6-常用函数" class="headerlink" title="4.6 常用函数"></a>4.6 常用函数</h3><pre><code>#1.find(sub，start，end) 查找第一个匹配的子字符串的起始位置
+#sub 要查找的位置的子字符串 start开始位置 end结束查找位置
+#如果找到返回位置，找不到返回-1
+index= string.find(&#39;a&#39;)
+print(index)
+#2.index() 查找子字符串在大字符串中的位置，如果找到返回起始位置，找不到抛出异常
+# 没有找到 抛出异常：ValueError: substring not found
+##sub 要查找的位置的子字符串 start开始位置 end结束查找位置
+index =string.index(&#39;a&#39;)
+#3. count(x，start，end) 函数 统计某个字符串在大字符串中出现的次数
+#x 要查找的次数的字符串 start开始位置 end结束查找位置
+count = string.count(&#39;b&#39;)
+print(count)
+
+#4.转换大小写
+#upper()把字符串全部转换为大写，会把转换之后的字符串返回
+upper_str = string.upper()
+print(upper_str)
+
+#5,大小写字符全部转化为小写字符
+lower_str = upper_str.lower()
+print(lower_str)
+#6.strip(chars) 去除字符串首尾两端的指定字符，不指定默认去除空格
+#chars 要去除的字符
+string= &#39;\n张\n\n\n\n三\n&#39;
+strip_str = string.strip(&#39;\n&#39;)
+print(strip_str)
+#7.replace()函数 可以将字符串中的字符进行替换
+#old 要替换的字符串 new替换后的字符串 count替换的次数
+replace_str = strip_str.replace(&#39;\n&#39;,&#39;==&#39;,7)
+print(replace_str)
+#8.split(seq,maxsplit) 函数 可以根据指定的字符对字符串进行分割，分割之后得到的是一个列表
+string = &#39;1;2;3;4;5;6;7;8;9&#39;
+#seq 指定的分割字符 maxsplit最大的分割次数 不指定就是全部分割
+rs = string.split(&#39;;&#39;)
+print(rs)
+#9.join()函数
+#iterable 可迭代对象
+string = &#39;*&#39;.join(rs)
+print(string)
+#10. startswitch()函数  判断某个字符串是否以某个字符串开头
+#如果以某个字符串开头，返回True 否则 返回false
+print(string.startswith(&#39;1&#39;))
+#11. endswitch() 判断某个字符串是否以某个字符串结束
+#如果以某个字符串结束,返回true 否则返回false
+print(string.endswith(&#39;10&#39;))</code></pre>
+<h1 id="五、枚举enumerate"><a href="#五、枚举enumerate" class="headerlink" title="五、枚举enumerate()"></a>五、枚举enumerate()</h1><pre><code># enumerate 使用场景：对一个列表或者数组既要遍历索引又要遍历元素时使用
+# 例如：
+#     比如：
+# for index,value in enumerate(list):
+#       print index,value
+# 当然也可以
+# for i in range(0,len(list)):
+#       print i,list[i]
+# enumerate 的参数为可遍历的变量，如字符串，列表等;返回值为enumerate类</code></pre>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%97%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">一、列表相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%97%E8%A1%A8%EF%BC%9F"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 什么是列表？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 添加数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3 修改数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.4.</span> <span class="toc-text">1.4 删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.5.</span> <span class="toc-text">1.5 查询数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.6.</span> <span class="toc-text">1.6 其他函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAcount%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.7.</span> <span class="toc-text">1.7 自己实现一个count函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAindex%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.8.</span> <span class="toc-text">1.8 自己实现一个index函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%97%E5%85%B8"><span class="toc-number">2.</span> <span class="toc-text">二、字典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E5%85%B8%EF%BC%9F"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1 什么是字典？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2 添加数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">2.0.3.</span> <span class="toc-text">2.3 删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-number">2.0.4.</span> <span class="toc-text">2.4 获取数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%83%E7%BB%84"><span class="toc-number">3.</span> <span class="toc-text">三、元组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%83%E7%BB%84%EF%BC%9F"><span class="toc-number">3.0.1.</span> <span class="toc-text">3.1 什么是元组？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%8E%B7%E5%8F%96%E5%85%83%E7%BB%84%E6%95%B0%E6%8D%AE"><span class="toc-number">3.0.2.</span> <span class="toc-text">3.2 获取元组数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%88%97%E8%A1%A8%E5%85%83%E7%A5%96%E5%B5%8C%E5%A5%97"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.3 列表元祖嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-number">3.0.4.</span> <span class="toc-text">3.4 其他函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.</span> <span class="toc-text">四、字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%A8%E6%B3%95"><span class="toc-number">4.0.1.</span> <span class="toc-text">4.1字符串用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="toc-number">4.0.2.</span> <span class="toc-text">4.2 字符串的拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E5%AD%97%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.0.3.</span> <span class="toc-text">4.3 字符串和数字之间的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E7%BB%83%E4%B9%A0"><span class="toc-number">4.0.4.</span> <span class="toc-text">4.4 练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-number">4.0.5.</span> <span class="toc-text">4.5 其他函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">4.0.6.</span> <span class="toc-text">4.6 常用函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9E%9A%E4%B8%BEenumerate"><span class="toc-number">5.</span> <span class="toc-text">五、枚举enumerate()</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&text=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&is_video=false&description=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=python(列表，字典，元组，字符串,枚举enumerate)&body=Check out this article: http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&title=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&name=python(列表，字典，元组，字符串,枚举enumerate)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/10/04/python-%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%97%E5%85%B8%EF%BC%8C%E5%85%83%E7%BB%84%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%9E%9A%E4%B8%BEenumerate/&t=python(列表，字典，元组，字符串,枚举enumerate)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
