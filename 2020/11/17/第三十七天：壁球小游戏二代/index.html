@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="在壁球小游戏二代里呢，我们干的事情就只有一个，设置使用 pygame.time.Clock 对象来设置屏幕的帧率（fps），以免壁球跑得太快，眼睛看不清楚 XD 1234567891011121314151617181920212223242526272829303132333435363738394041import pygame, sys, osimage_name &#x3D; &amp;#x27;ball.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三十七天：壁球小游戏二代">
+<meta property="og:url" content="http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="在壁球小游戏二代里呢，我们干的事情就只有一个，设置使用 pygame.time.Clock 对象来设置屏幕的帧率（fps），以免壁球跑得太快，眼睛看不清楚 XD 1234567891011121314151617181920212223242526272829303132333435363738394041import pygame, sys, osimage_name &#x3D; &amp;#x27;ball.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-17T10:08:48.000Z">
+<meta property="article:modified_time" content="2020-11-17T10:22:19.102Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Pygame">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>第三十七天：壁球小游戏二代</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/11/16/%E7%AC%AC%E4%B8%89%E5%8D%81%E5%85%AD%E5%A4%A9%EF%BC%9AHello-Pygame/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&text=第三十七天：壁球小游戏二代"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&is_video=false&description=第三十七天：壁球小游戏二代"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第三十七天：壁球小游戏二代&body=Check out this article: http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&name=第三十七天：壁球小游戏二代&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&t=第三十七天：壁球小游戏二代"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tick-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">Tick 函数</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        第三十七天：壁球小游戏二代
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-11-17T10:08:48.000Z" itemprop="datePublished">2020-11-17</time>
+        
+        (Updated: <time datetime="2020-11-17T10:22:19.102Z" itemprop="dateModified">2020-11-17</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Pygame/" rel="tag">Pygame</a>, <a class="tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>在壁球小游戏二代里呢，我们干的事情就只有一个，设置使用 pygame.time.Clock 对象来设置<br>屏幕的帧率（fps），以免壁球跑得太快，眼睛看不清楚 XD</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame, sys, os</span><br><span class="line"></span><br><span class="line">image_name = <span class="string">&#x27;ball.png&#x27;</span></span><br><span class="line">dir = os.path.dirname(__file__)</span><br><span class="line">root = dir + <span class="string">&#x27;/&#x27;</span> + image_name</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">size = width, height = <span class="number">600</span>, <span class="number">400</span></span><br><span class="line">speed = [<span class="number">1</span>, <span class="number">1</span>]  <span class="comment"># 速度，因为每次向下及向右移动一个像素</span></span><br><span class="line">BLACK = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>  <span class="comment"># 背景颜色</span></span><br><span class="line"></span><br><span class="line">screen = pygame.display.set_mode(size)</span><br><span class="line">pygame.display.set_caption(<span class="string">&#x27;壁球小游戏的节奏版和屏幕帧率设置&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pygame 里每个物体都是一个 surface（同 jme 的 geometry）</span></span><br><span class="line">ball = pygame.image.load(root)  </span><br><span class="line"><span class="comment"># rect 呢就是 surface 对象的一个矩形方格（同 jme 的 BoxCollisionShape）碰撞体</span></span><br><span class="line">ball_rect = ball.get_rect()</span><br><span class="line"></span><br><span class="line">fps = <span class="number">10000</span> </span><br><span class="line">fps_clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Main loop</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># Detect exit event</span></span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">            print(<span class="string">&#x27;Game quit ...&#x27;</span>)</span><br><span class="line">            sys.exit()</span><br><span class="line">    ball_rect = ball_rect.move(speed[<span class="number">0</span>], speed[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">if</span> ball_rect.left &lt; <span class="number">0</span> <span class="keyword">or</span> ball_rect.right &gt; width:</span><br><span class="line">        speed[<span class="number">0</span>] = - speed[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> ball_rect.top &lt; <span class="number">0</span> <span class="keyword">or</span> ball_rect.bottom &gt; height:</span><br><span class="line">        speed[<span class="number">1</span>] = - speed[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    screen.fill(BLACK)</span><br><span class="line">    <span class="comment"># 绘制壁球和壁球矩形</span></span><br><span class="line">    screen.blit(ball, ball_rect)</span><br><span class="line">    pygame.display.update()</span><br><span class="line">    fps_clock.tick(fps)</span><br></pre></td></tr></table></figure>
+
+<p>yap, 你没看错，就是只有添加了三行代码，分别是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fps = <span class="number">10000</span></span><br><span class="line"><span class="comment"># 创建 Clock 对象</span></span><br><span class="line">fps_clock = pygame.time.Clock()</span><br></pre></td></tr></table></figure>
+<p>和最后一行的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 调用 tick 函数</span></span><br><span class="line">fps_clock.tick(fps)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Tick-函数"><a href="#Tick-函数" class="headerlink" title="Tick 函数"></a>Tick 函数</h1><p>官方文档：</p>
+<blockquote>
+<p>This method should be called once per frame. It will compute how many milliseconds have passed since the previous call.</p>
+<p>If you pass the optional framerate argument the function will delay to keep the game running slower than the given ticks per second. This can be used to help limit the runtime speed of a game. By calling Clock.tick(40) once per frame, the program will never run at more than 40 frames per second.</p>
+<p>Note that this function uses SDL_Delay function which is not accurate on every platform, but does not use much cpu. Use tick_busy_loop if you want an accurate timer, and don’t mind chewing cpu.</p>
+</blockquote>
+<p>这就是要让你练一练英文啊 XD</p>
+<p>努力读懂它吧</p>
+<p>明天，让我们来操作小球吧 ！！！</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tick-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">Tick 函数</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&text=第三十七天：壁球小游戏二代"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&is_video=false&description=第三十七天：壁球小游戏二代"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=第三十七天：壁球小游戏二代&body=Check out this article: http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&title=第三十七天：壁球小游戏二代"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&name=第三十七天：壁球小游戏二代&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/11/17/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E5%A4%A9%EF%BC%9A%E5%A3%81%E7%90%83%E5%B0%8F%E6%B8%B8%E6%88%8F%E4%BA%8C%E4%BB%A3/&t=第三十七天：壁球小游戏二代"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
