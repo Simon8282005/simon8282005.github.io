@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="今天是圣诞节吼。。。所以圣诞快乐啦 (≧▽≦)&#x2F;啦啦啦  最近写 for Andorid 的游戏，所以嘛。。。没错，我就是要记录下来 XD Sub Hunter123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 游戏开发: Sub Hunter">
+<meta property="og:url" content="http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/index.html">
+<meta property="og:site_name" content="章鱼哥的个人空间">
+<meta property="og:description" content="今天是圣诞节吼。。。所以圣诞快乐啦 (≧▽≦)&#x2F;啦啦啦  最近写 for Andorid 的游戏，所以嘛。。。没错，我就是要记录下来 XD Sub Hunter123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-25T02:01:33.000Z">
+<meta property="article:modified_time" content="2020-12-25T02:10:14.603Z">
+<meta property="article:author" content="Simon">
+<meta property="article:tag" content="Andorid">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Android 游戏开发: Sub Hunter</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/12/13/Manjaro-%E7%BB%88%E4%BA%8E%EF%BC%81%E8%83%BD%E5%A4%9F%EF%BC%81%E5%A4%8D%E5%8D%B0%EF%BC%81%E6%96%87%E4%BB%B6%E4%BA%86%EF%BC%81/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&text=Android 游戏开发: Sub Hunter"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&is_video=false&description=Android 游戏开发: Sub Hunter"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Android 游戏开发: Sub Hunter&body=Check out this article: http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&name=Android 游戏开发: Sub Hunter&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&t=Android 游戏开发: Sub Hunter"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Sub-Hunter"><span class="toc-number">1.</span> <span class="toc-text">Sub Hunter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E4%BF%A1%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">调试信息</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Android 游戏开发: Sub Hunter
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">章鱼哥的个人空间</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-12-25T02:01:33.000Z" itemprop="datePublished">2020-12-25</time>
+        
+        (Updated: <time datetime="2020-12-25T02:10:14.603Z" itemprop="dateModified">2020-12-25</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Andorid/" rel="tag">Andorid</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>今天是圣诞节吼。。。所以圣诞快乐啦 <del>(≧▽≦)/</del>啦啦啦</p>
+<hr>
+<p>最近写 for Andorid 的游戏，所以嘛。。。没错，我就是要记录下来 XD</p>
+<h1 id="Sub-Hunter"><a href="#Sub-Hunter" class="headerlink" title="Sub Hunter"></a>Sub Hunter</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.myapp.subhunter;</span><br><span class="line"></span><br><span class="line"><span class="comment">// These are all the classes of other people&#x27;s</span></span><br><span class="line"><span class="comment">// (Android) code that we use for Sub Hunter</span></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.MotionEvent;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Canvas;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Paint;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Point;</span><br><span class="line"><span class="keyword">import</span> android.view.Display;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;  <span class="comment">// 要打印调试信息的话，别忘了 import 这个库</span></span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubHunter</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    Android runs this code just before</span></span><br><span class="line"><span class="comment">    the app is seen by the player.</span></span><br><span class="line"><span class="comment">    This makes it a good place to add</span></span><br><span class="line"><span class="comment">    the code that is needed for</span></span><br><span class="line"><span class="comment">    the one-time setup.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        This code will print out a message </span></span><br><span class="line"><span class="comment">        in Android Studio to let us know</span></span><br><span class="line"><span class="comment">        that we are &quot;Debugging&quot; and </span></span><br><span class="line"><span class="comment">        that we are &quot;In OnCreate&quot;.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Log.d(<span class="string">&quot;Debugging&quot;</span>, <span class="string">&quot;In onCreate&quot;</span>);</span><br><span class="line">        new_game();</span><br><span class="line">        draw();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    This code will execute when a new</span></span><br><span class="line"><span class="comment">    game needs to be started. It will</span></span><br><span class="line"><span class="comment">    happen when the app is first started</span></span><br><span class="line"><span class="comment">    and after the player wins a game.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">new_game</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;Debugging&quot;</span>, <span class="string">&quot;In new_game&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    Here we will do all the drawing.</span></span><br><span class="line"><span class="comment">    The grid lines, the HUD,</span></span><br><span class="line"><span class="comment">    the touch indicator and the</span></span><br><span class="line"><span class="comment">    &quot;BOOM&quot; when a sub&#x27; is hit</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;Debugging&quot;</span>, <span class="string">&quot;In draw&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    This part of the code will</span></span><br><span class="line"><span class="comment">    handle detecting that the player</span></span><br><span class="line"><span class="comment">    has tapped the screen</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent motionEvent)</span> </span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;Debugging&quot;</span>, <span class="string">&quot;In onTouchEvent&quot;</span>);</span><br><span class="line">        take_shot();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    The code here will execute when</span></span><br><span class="line"><span class="comment">    the player taps the screen It will</span></span><br><span class="line"><span class="comment">    calculate the distance from the sub&#x27;</span></span><br><span class="line"><span class="comment">    and determine a hit or miss</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">take_shot</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;Debugging&quot;</span>, <span class="string">&quot;In take_shot&quot;</span>);</span><br><span class="line">        draw();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This code says &quot;BOOM!&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">boom</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This code prints the debugging text</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print_debug_text</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这次的比较不一样，不是用 Python 来写了，而是 Java</p>
+<h1 id="调试信息"><a href="#调试信息" class="headerlink" title="调试信息"></a>调试信息</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2020</span>-<span class="number">12</span>-<span class="number">25</span> <span class="number">09</span>:<span class="number">36</span>:<span class="number">50.292</span> <span class="number">17249</span>-<span class="number">17249</span>/com.myapp.subhunter D/Debugging: In take_shot</span><br><span class="line"><span class="number">2020</span>-<span class="number">12</span>-<span class="number">25</span> <span class="number">09</span>:<span class="number">36</span>:<span class="number">50.292</span> <span class="number">17249</span>-<span class="number">17249</span>/com.myapp.subhunter D/Debugging: In draw</span><br><span class="line"><span class="number">2020</span>-<span class="number">12</span>-<span class="number">25</span> <span class="number">09</span>:<span class="number">36</span>:<span class="number">50.316</span> <span class="number">17249</span>-<span class="number">17249</span>/com.myapp.subhunter D/Debugging: In onTouchEvent</span><br><span class="line"><span class="number">2020</span>-<span class="number">12</span>-<span class="number">25</span> <span class="number">09</span>:<span class="number">36</span>:<span class="number">50.316</span> <span class="number">17249</span>-<span class="number">17249</span>/com.myapp.subhunter D/Debugging: In take_shot</span><br><span class="line"><span class="number">2020</span>-<span class="number">12</span>-<span class="number">25</span> <span class="number">09</span>:<span class="number">36</span>:<span class="number">50.316</span> <span class="number">17249</span>-<span class="number">17249</span>/com.myapp.subhunter D/Debugging: In draw</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Sub-Hunter"><span class="toc-number">1.</span> <span class="toc-text">Sub Hunter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E4%BF%A1%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">调试信息</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&text=Android 游戏开发: Sub Hunter"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&is_video=false&description=Android 游戏开发: Sub Hunter"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Android 游戏开发: Sub Hunter&body=Check out this article: http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&title=Android 游戏开发: Sub Hunter"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&name=Android 游戏开发: Sub Hunter&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/12/25/Android-%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-Sub-Hunter/&t=Android 游戏开发: Sub Hunter"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Simon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
